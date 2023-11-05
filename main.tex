@@ -59,7 +59,7 @@
 
 % \preprint{APS/123-QED}
 
-\title{Evaluating the performance of Quantum Boltzmann Machines on High-Fidelity Image Synthesis}% Force line breaks with \\
+\title{Comparing Classical and Quantum Generative Learning models for High-Fidelity Image Synthesis}% Force line breaks with \\
 % \thanks{A footnote to the article title}%
 
 \author{Siddhant Jain}
@@ -311,9 +311,9 @@ or in its expanded form
 E(v, h) = - \sum_{i} v_i \cdot a_i - \sum_{j} h_j \cdot b_j - \sum_{i} \sum_{j} v_i \cdot W_{ij} \cdot h_j
 \end{equation}
 
+Recall also that this energy function is intractable for all $v$ and $h$, thus RBMs are trained via Contrastive Divergence \cite{trainingrbms}.
 
-
-Recall also that this energy function is intractable for all $v$ and $h$, thus RBMs are trained via Contrastive Divergence \cite{trainingrbms}. The D-Wave 2000Q  via the Ising model is able to minimize an energy function via coupled qubits taking advantage of entanglement. The energy function for the Ising model is the following Hamiltonian:
+The D-Wave 2000Q via the Ising model is able to minimize an energy function via coupled qubits taking advantage of entanglement.The energy function for the Ising model is the following Hamiltonian:
 
 \begin{equation}
 E_{\text{ising}}(\mathbf{s}) = \sum_{i=1}^N h_i s_i + \sum_{i=1}^N \sum_{j=i+1}^N J_{i,j} s_i s_j
@@ -321,19 +321,22 @@ E_{\text{ising}}(\mathbf{s}) = \sum_{i=1}^N h_i s_i + \sum_{i=1}^N \sum_{j=i+1}^
 
 
 
-The $s_i \in \{-1, +1\}$ represents the qubit spin state, with spin up and spin down effectively. $h_i$ is the bias term provided by the external magnetic field, and $J_{i,j}$ captures the coefficients for the coupling between qubits \cite{dwavedocs}.
+The $s_i \in \{-1, +1\}$ represents the qubit spin state, with spin up and spin down effectively. $h_i$ is the bias term provided by the external magnetic field, and $J_{i,j}$ captures the coefficients for the coupling between qubits \cite{dwavedocs}. Solving for the ground state of an Ising Model is NP-hard, but by taking advantage of the QPU's ability to better simulate quantum systems we can solve this problem more efficiently \cite{monte}.
 
 
-Clamping neurons is the process of fixing certain qubits to specific values, namely the data being trained on. By clamping the neurons $v$ \& $h$ onto the qubits, applying an external magnetic field equivalent to the biasing parameters $a$ \& $b$, and setting the coupling parameters to match those of $W$ (and to 0 for absent or intralayer edges), the RBM can be effectively translated into a format suitable for a quantum annealer. The resulting model is known as a Quantum Boltzmann Machine (QBM)\cite{dwavedocs}.
+Clamping neurons is the process of fixing certain qubits to specific values, namely the data being trained on. By clamping the neurons $v$ \& $h$ onto the qubits, applying an external magnetic field equivalent to the biasing parameters $a$ \& $b$, and setting the coupling parameters to match those of $W$ (and to 0 for absent or intralayer edges), the RBM can be effectively translated into a format suitable for a quantum annealer. The resulting model is known as a Quantum Boltzmann Machine (QBM) and is similarly trained using QPU-specific Gibbs Sampling methods \cite{dwavedocs}\cite{qpugibbs}.
 
 
 
-Increased sampling from the quantum annealer leads to a more comprehensive representation of the Hamiltonian's energy landscape. The process of training a QBM involves adjusting the couplings based on this acquired information.The D-Wave 2000Q has the qubit coupling architecture in Figure~\ref{fig:chimera}.
+Increased sampling from the quantum annealer leads to a more comprehensive representation of the Hamiltonian's energy landscape. The process of training a QBM involves adjusting the couplings based on this acquired information. The D-Wave 2000Q has the qubit coupling architecture in Figure~\ref{fig:chimera}.
 
 \begin{figure}[h]
     \includegraphics[width=0.7\columnwidth]{chimera.png}
     \caption{\label{fig:chimera} D-Wave Quantum Processing Unit (QPU) Topology Chimera Graph \cite{dwavedocs}}
 \end{figure}
+
+\subsubsection{Image Classification}
+The field of Quantum Machine Learning (QML) applied to computer vision is still quite nascent. Most QML research focuses on classification tasks, particularly using quantum support vector machines, decision trees, nearest neighbours, annealing-based classifiers, and variation classifiers \cite{classifiers}.  Wei et al. propose a Quantum Convolutional Neural Network with capabilities for spatial filtering, image smoothing, sharpening, and edge detection, along with MNIST digit recognition, with a lower computation complexity than classical counterparts\cite{quantumCNN}. Such research provides a valuable precursor to the exploration of QML for image synthesis.
 
 \subsubsection{Image Synthesis}
 In 2020, Sleeman et al. demonstrated the D-Wave QUBO's ability to generate images mimicking the MNIST hand-drawn digits and Fashion MNIST datasets \cite{qmlimggen}. Due to the limited number of qubits available Sleeman et al. create an encoding of the images via a convolutional autoencoder, feed the encoding to a QBM, and finally reverse the process to perform image synthesis. The model architecture is provided in Figure~\ref{fig:hybridML}.
