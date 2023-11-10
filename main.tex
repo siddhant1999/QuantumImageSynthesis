@@ -59,7 +59,7 @@
 
 % \preprint{APS/123-QED}
 
-\title{Quantum Machine Learning Guided Image Synthesis}% Force line breaks with \\
+\title{Comparing Classical and Quantum Generative Learning models for High-Fidelity Image Synthesis}% Force line breaks with \\
 % \thanks{A footnote to the article title}%
 
 \author{Siddhant Jain}
@@ -99,7 +99,11 @@ Univsersity of California San Diego, Visiting Scientist for Quantum Computation 
 
 \begin{abstract}
 \noindent
-Image synthesis poses a challenging problem that researchers in computer vision and machine learning have been grappling with for several decades. Numerous machine learning techniques have emerged and proven effective in generating high-fidelity artificial images. This study breaks new ground by exploring image synthesis through generative learning using the D-Wave 2000Q quantum annealer, marking the first attempt to address the issue of generative image synthesis on a Quantum Processing Unit (QPU). Alongside executing image synthesis on the quantum annealer, this research also compares its performance with existing classical models and delves into resolving the Generative Learning Trilemma.
+The field of computer vision has long grappled with the challenging task of image synthesis, which entails the creation of novel high-fidelity images. This task is underscored by the Generative Learning Trilemma, which posits that it is not possible for any image synthesis model to simultaneously excel at high-quality sampling, achieve mode convergence with diverse sample representation, and perform rapid sampling.
+
+In this paper, we explore the potential of Quantum Boltzmann Machines (QBMs) for image synthesis, leveraging the D-Wave 2000Q quantum annealer. We undertake a comprehensive performance assessment of QBMs in comparison to established generative models in the field: Restricted Boltzmann Machines (RBMs), Variational Autoencoders (VAEs), Generative Adversarial Networks (GANs), and Denoising Diffusion Probabilistic Models (DDPMs). Our evaluation is grounded in widely recognized scoring metrics, including the Fréchet Inception Distance (FID), Kernel Inception Distance (KID), and Inception Scores.
+
+The results of our study indicate that QBMs do not significantly outperform the conventional models in terms of the three evaluative criteria. Moreover, QBMs have not demonstrated the capability to overcome the challenges outlined in the Trilemma of Generative Learning. Through our investigation, we contribute to the understanding of quantum computing's role in generative learning and identify critical areas for future research to enhance the capabilities of image synthesis models.
 \end{abstract}
 
 %\keywords{Suggested keywords}%Use showkeys class option if keyword
@@ -111,13 +115,13 @@ Image synthesis poses a challenging problem that researchers in computer vision 
 \section{Introduction}
 \subsection{Generative modelling}
 \noindent
-Generative modelling is a class of machine learning that aims to generate novel samples from an existing dataset. Image synthesis is a subset of generative modelling applications relating to the generation of novel high-fidelity images that mimic an underlying distribution of images, known as the training set. The main types of generative models are Generative Adversarial Networks (GANs), Probabilistic models (RBMs and DBMs), and Variational Autoencoders (VAE), all of which are capable of high-fidelity image synthesis \cite{weng2021diffusion}. In 2020, a new methodology for producing image synthesis using diffusion models was shown to produce high-quality images \cite{ho2020denoising}. In 2021, OpenAI demonstrated Denoising Diffusion Probabilistic Models' (DDPM) superiority in generating higher image sample quality than the previous state-of-the-art GANs \cite{dhariwal2021diffusion}. 
+Generative modelling is a class of machine learning that aims to generate novel samples from an existing dataset. Image synthesis is a subset of generative modelling applications relating to the generation of novel high-fidelity images that mimic an underlying distribution of images, known as the training set. The main types of generative models are Generative Adversarial Networks (GANs), Probabilistic models, and Variational Autoencoders (VAE), all of which are capable of high-fidelity image synthesis \cite{weng2021diffusion}. In 2020, a new methodology for producing image synthesis using diffusion models was shown to produce high-quality images \cite{ho2020denoising}. In 2021, OpenAI demonstrated Denoising Diffusion Probabilistic Models' (DDPM) superiority in generating higher image sample quality than the previous state-of-the-art GANs \cite{dhariwal2021diffusion}. 
 
-Quantum annealers, namely the D-Wave 2000Q have also been shown to perform generative modelling with varied success \cite{Jain2020}\cite{Thulasidasan2016}. By taking advantage of quantum sampling and parallelization D-Wave 2000Q is able to hold an embedding of the latent space relating to a set of training data in an architecture of coupled Qubits \cite{Amin_2018}. There are still significant research gaps relating to utilizing generative modelling on the quantum processing unit for image synthesis, especially as it relates to measuring their performance against other generative models on standard scoring methods, namely: Inception score, Frechet Inception Distance (FID), and Kernel Inception Distance (KID). This research aims to close this gap by investigating the efficacy of the D-Wave 2000Q quantum annealer on the problem of image synthesis.
+Quantum annealers, namely the D-Wave 2000Q have also been shown to perform generative modelling with varied success \cite{Jain2020}\cite{Thulasidasan2016}. By taking advantage of quantum sampling and parallelization D-Wave 2000Q can hold an embedding of the latent space relating to a set of training data in an architecture of coupled Qubits \cite{Amin_2018}. There are still significant research gaps relating to utilizing generative modelling on the quantum processing unit for image synthesis, especially as it relates to measuring their performance against other generative models on standard scoring methods, namely: Inception score, FID, and KID. This research aims to close this gap by investigating the efficacy of the D-Wave 2000Q quantum annealer on the problem of image synthesis.
 
 \subsection{Trilemma of Generative Learning}
 \label{trilemmaGL}
-Xiao et al. describe the Trilemma of Generative Learning as the inability of any single deep generative modelling framework to solve the following requirements for wide adoption and application of image synthesis: (i) high-quality sampling, (ii) mode coverage and sample diversity, and (iii) fast and computationally inexpensive sampling. \cite{xiao2022DDGAN}. Current research primarily focuses on high-quality image generation and ignores the real-world sampling constraints and the need for high diversity and mode coverage. Fast sampling allows for the generative models to be utilized in greater fast-learning applications, which require quick image synthesis, e.g. interactive image editing \cite{xiao2022DDGAN}. Diversity and mode coverage ensure generated images are not direct copies of, but are also not significantly skewed from, the training data.
+Xiao et al. describe the Trilemma of Generative Learning as the inability of any single deep generative modelling framework to solve the following requirements for wide adoption and application of image synthesis: (i) high-quality sampling, (ii) mode coverage and sample diversity, and (iii) fast and computationally inexpensive sampling \cite{xiao2022DDGAN}. Current research primarily focuses on high-quality image generation and ignores the real-world sampling constraints and the need for high diversity and mode coverage. Fast sampling allows for the generative models to be utilized in greater fast-learning applications, which require quick image synthesis, e.g. interactive image editing \cite{xiao2022DDGAN}. Diversity and mode coverage ensure generated images are not direct copies of, but are also not significantly skewed from, the training data.
 
 \begin{figure}[h]
 \includegraphics[width=0.9\columnwidth]{trilemma.png}% Here is how to import EPS art
@@ -131,14 +135,14 @@ This paper reviews research that aims to tackle this trilemma with the D-Wave qu
 The trajectory of artificial intelligence in the domain of image synthesis, evolving from Restricted Boltzmann Machines (RBMs) to Denoising Diffusion Probabilistic Models (DDPMs), marks a significant technical progression. This advancement, intermediated by Variational Autoencoders (VAEs) and Generative Adversarial Networks (GANs), has driven improvements in the fidelity, diversity, and realism of generated images, while also introducing a host of model-specific challenges and computational complexities.
 
 
-Before exploring generative modelling within quantum computing environments, let us provide background into classical image synthesis models, namely Restricted Boltzmann Machines (RBMs), Variational Autoencoders (VAEs), Generative Adversarial Networks (GANs), and Denoising Diffusion Probabilistic Models (DDPMs).
+Before exploring generative modelling within quantum computing environments, let us provide background into classical image synthesis models, namely RBMs, VAEs, GANs, and DDPMs.
 
 
 Following this, we will delve into the research of quantum annealing and its application in machine learning. The ultimate goal is to create a blueprint for image synthesis on a quantum annealer.
 
 \subsection{Classical Image Synthesis}
 \subsubsection{Restricted Boltzmann Machine}
-Boltzmann machines are a class of energy-based generative learning models. A Restricted Boltzmann Machine (RBM), a subset of Boltzmann Machines, is a fully connected bipartite graph that is segmented into visible and hidden neurons.
+Boltzmann machines are a class of energy-based generative learning models. A Restricted Boltzmann Machine, a subset of Boltzmann Machines, is a fully connected bipartite graph that is segmented into visible and hidden neurons.
 
 \begin{figure}[h]
     \includegraphics[width=0.6\columnwidth]{rbmgraph.png}
@@ -179,7 +183,7 @@ Z = \sum_{v,h}e^{-E(v,h)}
 The difficulty in evaluating the partition function $Z$ introduces the need to use Gibbs sampling with Contrastive Divergence Learning, introduced by Hinton et al. in 2005 \cite{CarreiraPerpin2005OnCD}. By utilizing such methods one can train the RBM quickly via gradient descent, similar to other neural networks. By adding more hidden layers a deeper embedding can be contained in the system; such a system is called a Deep Belief Network (DBN).
 
 
-Restricted Boltzmann Machines, while of little note in the modern landscape of machine learning research due to their limited performance and relatively slow training times, are of particular note to this research as they have direct parallels with both the architecture of the D-Wave 2000Q quantum processor and the method by which they reduce the total energy of their respective systems. RBMs also have limited application in computer vision but were an important advancement in the field of generative modelling as a whole.
+RBMs, while of little note in the modern landscape of machine learning research due to their limited performance and relatively slow training times, are of particular note to this research as they have direct parallels with both the architecture of the D-Wave 2000Q quantum processor and the method by which they reduce the total energy of their respective systems. RBMs also have limited application in computer vision but were an important advancement in the field of generative modelling as a whole.
 
 
 
@@ -194,9 +198,9 @@ Autoencoders seek to compress an input space into a compressed latent representa
     \caption{\label{fig:vae} Variational Autoencoder Architecture \cite{rocca_2021}}
 \end{figure}
 
-\subsubsection{Generative Adversarial Network}
+\subsubsection{Generative Adversarial Networks}
 \label{VG}
-The most significant development in high-fidelity generative image synthesis was in 2014 with the introduction of  Generative Adversarial Networks (GANs) by Ian Goodfellow et al. \cite{goodfellow2014generative}. Goodfellow et al . propose a two-player minimax game composed of a generator model (G) and a discriminator model (D). As the game progresses both the generator and discriminator models improve.
+The most significant development in high-fidelity generative image synthesis was in 2014 with the introduction of  GANs by Ian Goodfellow et al. \cite{goodfellow2014generative}. Goodfellow et al. propose a two-player minimax game composed of a generator model (G) and a discriminator model (D). As the game progresses both the generator and discriminator models improve.
 
 
 GANs are trained via an adversarial contest between the generator model (G) and discriminator model (D) \cite{goodfellow2014generative}. $x$ contains samples from both the training set and $p_g$, the images generated by G. $D(x;\theta_d)$ outputs the probability that $x$ originates from the training dataset as opposed to $p_g$. Meanwhile $G(z, \theta_g)$ outputs $p_g$ given noise $z$. G's goal is to fool D while D aims to reliably differentiate real training data from data generated by G. The loss function for G is $log(1 - D(G(z)))$. Thus the value/loss function, error, of a GAN is represented as:
@@ -224,7 +228,7 @@ GANs have a number of shortcomings that make them difficult to train. Due to the
 
 \subsubsection{Denoising Diffusion Probabilistic Model}
 
-Denoising Diffusion Probabilistic Models (DDPMs) are a recent development proposed by Jonathan Ho et al. (2020) inspired by nonequilibrium thermodynamics that produces high-fidelity image synthesis using a parameterized Markov chain \cite{ho2020denoising}. Beginning with the training sample, each step of the Markov chain adds a single layer of Gaussian noise. A neural network is trained on parameterizing these additional Gaussian noise layers in order to reverse the process from random noise to a high-fidelity image.
+DDPMs are a recent development proposed by Jonathan Ho et al. (2020) inspired by nonequilibrium thermodynamics that produces high-fidelity image synthesis using a parameterized Markov chain \cite{ho2020denoising}. Beginning with the training sample, each step of the Markov chain adds a single layer of Gaussian noise. A neural network is trained on parameterizing these additional Gaussian noise layers in order to reverse the process from random noise to a high-fidelity image.
 
 \begin{figure}[h]
     \includegraphics[width=0.9\columnwidth]{ddpm.png}
@@ -265,9 +269,9 @@ Using a U-Net, a CNN with upsampling, with stochastic gradient descent and $T=10
 
 
 
-In 2021, Dhariwal et al at OpenAI made improvements upon the original DDPM parameters and achieved state-of-the-art FID scores of 2.97 on ImageNet 128×128, 4.59 on ImageNet 256×256, and 7.72 on ImageNet 512×512 \cite{dhariwal2021diffusion}.
+In 2021, Dhariwal et al. at OpenAI made improvements upon the original DDPM parameters and achieved state-of-the-art FID scores of 2.97 on ImageNet 128×128, 4.59 on ImageNet 256×256, and 7.72 on ImageNet 512×512 \cite{dhariwal2021diffusion}.
 
-The first improvement is to not set $\Sigma_\theta(x_t, t) $ as a constant but rather as the following:
+The first improvement is not to set $\Sigma_\theta(x_t, t) $ as a constant but rather as the following:
 \begin{equation}
 \Sigma_\theta(x_t, t) = \mathrm{exp}(v \mathrm{log} \beta_t + (1 - v) \mathrm{log} \tilde{\beta_t})
 \end{equation}
@@ -276,7 +280,7 @@ The first improvement is to not set $\Sigma_\theta(x_t, t) $ as a constant but r
 Where $\beta_t$ and  $\tilde{\beta_t}$ correspond to the upper and lower bounds of the Gaussian variance.
 
 
-Dhariwal et al also explore the following architectural changes; note: attention heads refer to embedding blocks in the U-Net  \cite{dhariwal2021diffusion}:
+Dhariwal et al. also explore the following architectural changes; note: attention heads refer to embedding blocks in the U-Net  \cite{dhariwal2021diffusion}:
 \begin{itemize}
 \item Increasing depth versus width, holding model size relatively constant.
 \item Increasing the number of attention heads.
@@ -290,7 +294,7 @@ With these changes, Dhariwal et al. were able to demonstrate their DDPM beating 
 
 \subsection{Quantum Machine Learning}
 \subsubsection{Quantum Boltzmann Machine}
-Energy-based machine learning models, like the Restricted Boltzmann Machine, seek to minimize an energy function. Recall:
+Energy-based machine learning models, like the RBM, seek to minimize an energy function. Recall:
 
 \begin{equation}
 p(v) = \frac{\sum_{h} e^{-E(v,h)}}{\sum_{v,h}e^{-E(v,h)}}
@@ -307,9 +311,9 @@ or in its expanded form
 E(v, h) = - \sum_{i} v_i \cdot a_i - \sum_{j} h_j \cdot b_j - \sum_{i} \sum_{j} v_i \cdot W_{ij} \cdot h_j
 \end{equation}
 
+Recall also that this energy function is intractable for all $v$ and $h$, thus RBMs are trained via Contrastive Divergence \cite{trainingrbms}.
 
-
-Recall also that this energy function is intractable for all $v$ and $h$, thus RBMs are trained via Contrastive Divergence \cite{trainingrbms}. The D-Wave 2000Q  via the Ising model is able to minimize an energy function via coupled qubits taking advantage of entanglement. The energy function for the Ising model is the following Hamiltonian:
+The D-Wave 2000Q via the Ising model is able to minimize an energy function via coupled qubits taking advantage of entanglement.The energy function for the Ising model is the following Hamiltonian:
 
 \begin{equation}
 E_{\text{ising}}(\mathbf{s}) = \sum_{i=1}^N h_i s_i + \sum_{i=1}^N \sum_{j=i+1}^N J_{i,j} s_i s_j
@@ -317,19 +321,22 @@ E_{\text{ising}}(\mathbf{s}) = \sum_{i=1}^N h_i s_i + \sum_{i=1}^N \sum_{j=i+1}^
 
 
 
-The $s_i \in \{-1, +1\}$ represents the qubit spin state, with spin up and spin down effectively. $h_i$ is the bias term provided by the external magnetic field, and $J_{i,j}$ captures the coefficients for the coupling between qubits \cite{dwavedocs}.
+The $s_i \in \{-1, +1\}$ represents the qubit spin state, with spin up and spin down effectively. $h_i$ is the bias term provided by the external magnetic field, and $J_{i,j}$ captures the coefficients for the coupling between qubits \cite{dwavedocs}. Solving for the ground state of an Ising Model is NP-hard, but by taking advantage of the QPU's ability to better simulate quantum systems we can solve this problem more efficiently \cite{monte}.
 
 
-Clamping neurons is the process of fixing certain qubits to specific values, namely the data being trained on. By clamping the neurons $v$ \& $h$ onto the qubits, applying an external magnetic field equivalent to the biasing parameters $a$ \& $b$, and setting the coupling parameters to match those of $W$ (and to 0 for absent or intralayer edges), the RBM can be effectively translated into a format suitable for a quantum annealer. The resulting model is known as a Quantum Boltzmann Machine (QBM) \cite{dwavedocs}.
+Clamping neurons is the process of fixing certain qubits to specific values, namely the data being trained on. By clamping the neurons $v$ \& $h$ onto the qubits, applying an external magnetic field equivalent to the biasing parameters $a$ \& $b$, and setting the coupling parameters to match those of $W$ (and to 0 for absent or intralayer edges), the RBM can be effectively translated into a format suitable for a quantum annealer. The resulting model is known as a Quantum Boltzmann Machine (QBM) and is similarly trained using QPU-specific Gibbs Sampling methods \cite{dwavedocs}\cite{qpugibbs}.
 
 
 
-Increased sampling from the quantum annealer leads to a more comprehensive representation of the Hamiltonian's energy landscape. The process of training a Quantum Boltzmann Machine (QBM) involves adjusting the couplings based on this acquired information.The D-Wave 2000Q has the qubit coupling architecture in Figure~\ref{fig:chimera}.
+Increased sampling from the quantum annealer leads to a more comprehensive representation of the Hamiltonian's energy landscape. The process of training a QBM involves adjusting the couplings based on this acquired information. The D-Wave 2000Q has the qubit coupling architecture in Figure~\ref{fig:chimera}.
 
 \begin{figure}[h]
     \includegraphics[width=0.7\columnwidth]{chimera.png}
     \caption{\label{fig:chimera} D-Wave Quantum Processing Unit (QPU) Topology Chimera Graph \cite{dwavedocs}}
 \end{figure}
+
+\subsubsection{Image Classification}
+The field of Quantum Machine Learning (QML) applied to computer vision is still quite nascent. Most QML research focuses on classification tasks, particularly using quantum support vector machines, decision trees, nearest neighbours, annealing-based classifiers, and variation classifiers \cite{classifiers}.  Wei et al. propose a Quantum Convolutional Neural Network with capabilities for spatial filtering, image smoothing, sharpening, and edge detection, along with MNIST digit recognition, with a lower computation complexity than classical counterparts\cite{quantumCNN}. Such research provides a valuable precursor to the exploration of QML for image synthesis.
 
 \subsubsection{Image Synthesis}
 In 2020, Sleeman et al. demonstrated the D-Wave QUBO's ability to generate images mimicking the MNIST hand-drawn digits and Fashion MNIST datasets \cite{qmlimggen}. Due to the limited number of qubits available Sleeman et al. create an encoding of the images via a convolutional autoencoder, feed the encoding to a QBM, and finally reverse the process to perform image synthesis. The model architecture is provided in Figure~\ref{fig:hybridML}.
@@ -340,7 +347,7 @@ In 2020, Sleeman et al. demonstrated the D-Wave QUBO's ability to generate image
 \end{figure*}
 
 
-In their research, Sleeman et al. contrast the performance of their Quantum Boltzmann Machine (QBM) with that of a traditional Restricted Boltzmann Machine (RBM), in addition to assessing the efficacy of the autoencoder's encoding capabilities. Despite showcasing the potential of the D-Wave 2000Q in aiding image synthesis, the authors do not juxtapose their findings with those of other classical generative modelling methods. Furthermore, the omission of Frechet Inception Distance (FID), Kernel Inception Distance (KID), and Inception scores for their proposed models restricts the breadth of comparison between the QBM and its classical counterparts.
+In their research, Sleeman et al. contrast the performance of their QBM with that of a traditional RBM, in addition to assessing the efficacy of the autoencoder's encoding capabilities. Despite showcasing the potential of the D-Wave 2000Q in aiding image synthesis, the authors do not juxtapose their findings with those of other classical generative modelling methods. Furthermore, the omission of FID, KID, and Inception scores for their proposed models restricts the breadth of comparison between the QBM and its classical counterparts.
 
 \section{Methods}
 \subsection{Goal}
@@ -370,7 +377,7 @@ The images in CIFAR-10 are exclusive to photographs of discrete distinct objects
 
 \subsection{Classical Models}
 
-To establish a benchmark and facilitate the comparison of results between novel quantum machine learning methods and existing generative image synthesis techniques, we initially trained and tested a series of classical models on the CIFAR-10 dataset. The classical models we trained on were the following: (i) Restricted Boltzmann Machine (RBM), (ii) Variational Autoencoder (VAE), (iii) Generative Adversarial Networks (GANs), and (iv) Denoising Diffusion Probabilistic Models. Initially, we adopted a uniform approach, training each model with the same learning rate, batch size, and number of epochs to standardize results. However, this method led to significant challenges due to the varying rates of convergence among the models, causing an imbalance in result quality and impeding our analysis. Consequently, we adjusted our approach to individually optimize the hyperparameters for each model within the bounds of available time and resources. This adjustment yielded higher-quality results, offering a more equitable comparison across models. We concluded the training of each model when additional epochs resulted in insignificant improvements in model loss, a term left intentionally vague to accommodate training variability across models. An exception to this approach was made for the DDPM, which demanded considerable computational power, prompting us to conclude the experiment after 30,000 iterations.
+To establish a benchmark and facilitate the comparison of results between novel quantum machine learning methods and existing generative image synthesis techniques, we initially trained and tested a series of classical models on the CIFAR-10 dataset. The classical models we trained on were the following: (i) RBM, (ii) VAE, (iii) GANs, and (iv) DDPM. Initially, we adopted a uniform approach, training each model with the same learning rate, batch size, and number of epochs to standardize results. However, this method led to significant challenges due to the varying rates of convergence among the models, causing an imbalance in result quality and impeding our analysis. Consequently, we adjusted our approach to individually optimize the hyperparameters for each model within the bounds of available time and resources. This adjustment yielded higher-quality results, offering a more equitable comparison across models. We concluded the training of each model when additional epochs resulted in insignificant improvements in model loss, a term left intentionally vague to accommodate training variability across models. An exception to this approach was made for the DDPM, which demanded considerable computational power, prompting us to conclude the experiment after 30,000 iterations.
 
 
 \subsection{Quantum Model}
@@ -383,7 +390,7 @@ For the quantum model, the training images were also normalized by mean and vari
 \end{figure}
 
 
-The D-Wave 2000Q quantum annealer is trained by mapping the architecture of an RBM onto the QPU chimera graph, thus creating a Quantum Boltzmann Machine \cite{dwavedocs}. The visible, i.e. input, nodes are clamped with the training data and the hidden layer is sampled from. As we increase sampling we gain a better understanding of the energy landscape and can better update the weights (i.e. inter-qubit coupling coefficients) \cite{Jain2020}.
+The D-Wave 2000Q quantum annealer is trained by mapping the architecture of an RBM onto the QPU chimera graph, thus creating a QBM \cite{dwavedocs}. The visible, i.e. input, nodes are clamped with the training data and the hidden layer is sampled from. As we increase sampling we gain a better understanding of the energy landscape and can better update the weights (i.e. inter-qubit coupling coefficients) \cite{Jain2020}.
 
 
 Due to limitations with the number of available qubits on the D-Wave 2000Q being 2048, and user resource allocation challenges, our experiments are limited. To resolve this constraint, each image was split into 4 distinct squares along the $x$ and $y$ axes. Thus each training image was 16x16x3 for an input vector size of 768.
@@ -461,7 +468,7 @@ The FID score is determined by taking the Wasserstein metric between the two mul
 
 
 \subsubsection{Kernel Inception Distance (KID)}
-Kernel Inception Distance measures the maximum mean discrepancy of the distributions of training and generated images by randomly sampling from them both \cite{MMD_KID}. KID does not specifically account for differences in high-level features and rather compares the raw distributions more directly.
+KID measures the maximum mean discrepancy of the distributions of training and generated images by randomly sampling from them both \cite{MMD_KID}. KID does not specifically account for differences in high-level features and rather compares the raw distributions more directly.
 
 
 Specifically, for generator $X$ with probability measure $\mathbb{P}$ and random variable $Y$ with probability measure $\mathbb{Q}$ we have:
@@ -512,7 +519,7 @@ Our qualitative evaluation was performed by analyzing the visual discernment of 
 
 
 
-The generated images by the Restricted Boltzmann Machine include a high degree of brightly-colored noise. Interestingly this noise is concentrated in sections of the image with high texture, i.e. high variance of pixel values. Notice the image of the cat in the bottom-center on Figure~\ref{fig:rbmout} has a great deal of noise at the edge of and inside the cat itself, but not in the blank white space surrounding it. This demonstrates a high degree of internode interference in the hidden layer. That is, areas with large pixel variance influence the surrounding pixels greatly and often cause bright spots to appear as a result.
+The generated images by the RBM include a high degree of brightly-colored noise. Interestingly this noise is concentrated in sections of the image with high texture, i.e. high variance of pixel values. Notice the image of the cat in the bottom-center on Figure~\ref{fig:rbmout} has a great deal of noise at the edge of and inside the cat itself, but not in the blank white space surrounding it. This demonstrates a high degree of internode interference in the hidden layer. That is, areas with large pixel variance influence the surrounding pixels greatly and often cause bright spots to appear as a result.
 
 \subsection{Variational Autoencoder (VAE)}
 
@@ -537,7 +544,7 @@ The generated images by the Restricted Boltzmann Machine include a high degree o
 
 The generated images from the VAE are incredibly high fidelity. Notably the VAE results liken superresolution. Notice, the decrease in image blur/noise from the input images. Since the VAE encodes an embedding of the training data some features, like the exact color of the vehicle in the top left corner in Figure~\ref{fig:vaeout} are lost, but the outline of the vehicle and the background are sharpened. This demonstrates the VAE is capturing features exceptionally well.
 
-\subsection{Generative Adversarial Network (GAN)}
+\subsection{Generative Adversarial Networks (GANs)}
 
 \begin{figure}[h]
     \begin{subfigure}{\columnwidth}
@@ -647,7 +654,7 @@ The QBM currently fails to improve on the Trilemma of Generative Learning (\ref{
 
 \section{Conclusion \& Future Work}
 \label{future}
-In conclusion, our team attempted to determine the efficacy of the D-Wave 2000Q quantum annealer on image synthesis, evaluated by industry-standard metrics compared to classical model counterparts, and determine if Quantum Boltzmann Machines can crack the Trilemma of Generative Learning (\ref{trilemmaGL}). The quantum annealer was utilized via a Quantum Boltzmann Machine architecture and evaluated on the following \ref{metrics_}, Inception score, FID, and KID against the following classical models:
+In conclusion, our team attempted to determine the efficacy of the D-Wave 2000Q quantum annealer on image synthesis, evaluated by industry-standard metrics compared to classical model counterparts, and determine if QBMs can crack the Trilemma of Generative Learning (\ref{trilemmaGL}). The quantum annealer was utilized via a QBM architecture and evaluated on the following \ref{metrics_}, Inception score, FID, and KID against the following classical models:
 \begin{itemize}
 \item Restricted Boltzmann Machine
 \item Variational Autoencoder
@@ -659,7 +666,7 @@ In conclusion, our team attempted to determine the efficacy of the D-Wave 2000Q 
 The quantitative results of these experiments can be found in Table~\ref{tab: results}. The results showed that the QBM struggled to generate images with a high Inception score, but managed to show promise in FID and KID scores indicating an ability to generate images with salient features and a similar distribution to that of the training set.
 
 
-The Quantum Boltzmann Machine implemented on the D-Wave 2000Q quantum annealer is not significantly better than the state-of-the-art classical models in the field. While the QBM outperformed a few classical models on FID and KID scores, it's important to note the difficulty of comparing models with different architectures trained for different hyper-parameters. The QBM did show great promise in its ability to represent the underlying distribution of the training data in its generated samples and we hope to see this improve with more hardware improvements.
+The QBM implemented on the D-Wave 2000Q quantum annealer is not significantly better than the state-of-the-art classical models in the field. While the QBM outperformed a few classical models on FID and KID scores, it's important to note the difficulty of comparing models with different architectures trained for different hyper-parameters. The QBM did show great promise in its ability to represent the underlying distribution of the training data in its generated samples and we hope to see this improve with more hardware improvements.
 
 \subsection{Image Preprocessing}
 A significant challenge in developing the QBM was the lack of qubits. This limitation forced us to split each image into a set of four squares, as described in \ref{binarize}, leading to the issue of stitching generated images in post. This issue can be somewhat resolved in the future in a few different ways.
