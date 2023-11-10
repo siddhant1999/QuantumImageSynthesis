@@ -6,13 +6,16 @@
   url     = "https://lilianweng.github.io/lil-log/2021/07/11/diffusion-models.html"
 }
 
-@misc{ho2020denoising,
-      title={Denoising Diffusion Probabilistic Models}, 
-      author={Jonathan Ho and Ajay Jain and Pieter Abbeel},
-      year={2020},
-      eprint={2006.11239},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG}
+@inproceedings{ho2020denoising,
+ author = {Ho, Jonathan and Jain, Ajay and Abbeel, Pieter},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {H. Larochelle and M. Ranzato and R. Hadsell and M.F. Balcan and H. Lin},
+ pages = {6840--6851},
+ publisher = {Curran Associates, Inc.},
+ title = {Denoising Diffusion Probabilistic Models},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2020/file/4c5bcfec8584af0d967f1ab10179ca4b-Paper.pdf},
+ volume = {33},
+ year = {2020}
 }
 
 @misc{dhariwal2021diffusion,
@@ -172,7 +175,7 @@ doi = {10.5591/978-1-57735-516-8/IJCAI11-210}
       primaryClass={stat.ML}
 }
 
- @misc{rocca_2021, title={Understanding variational autoencoders (VAES)}, url={https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73}, journal={Medium}, publisher={Towards Data Science}, author={Rocca, Joseph}, year={2021}, month={Mar}} 
+ @misc{rocca_2021, title={Understanding variational autoencoders (VAES)}, howpublished={https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73}, journal={Medium}, publisher={Towards Data Science}, author={Rocca, Joseph}, year={2021}, month={Mar}} 
  
  @misc{goodfellow2014generative,
       title={Generative Adversarial Networks}, 
@@ -231,9 +234,16 @@ numpages = {30}
 }
 
 
- @misc{pathmind, title={A beginner's guide to generative adversarial networks (gans)}, url={https://wiki.pathmind.com/generative-adversarial-network-gan}, journal={Pathmind}} 
+ @misc{pathmind, title={A beginner's guide to generative adversarial networks (gans)}, howpublished={https://wiki.pathmind.com/generative-adversarial-network-gan}, journal={Pathmind}} 
 
- @misc{google, title={Common problems &nbsp;|&nbsp; generative adversarial networks &nbsp;|&nbsp; google developers}, url={https://developers.google.com/machine-learning/gan/problems}, journal={Google}, publisher={Google}} 
+@misc{google,
+      title={Towards Principled Methods for Training Generative Adversarial Networks}, 
+      author={Martin Arjovsky and Léon Bottou},
+      year={2017},
+      eprint={1701.04862},
+      archivePrefix={arXiv},
+      primaryClass={stat.ML}
+} 
 
 @misc{salimans2016improved,
       title={Improved Techniques for Training GANs}, 
@@ -265,44 +275,48 @@ Howpublished = {Advances in Neural Information Processing Systems 30 (NIPS 2017)
   journal = {{SN} Applied Sciences}
 }
 
-@techreport{Thulasidasan2016,
-  doi = {10.2172/1332219},
-  url = {https://doi.org/10.2172/1332219},
-  year = {2016},
-  month = nov,
-  publisher = {Office of Scientific and Technical Information ({OSTI})},
-  author = {Sunil Thulasidasan},
-  title = {Generative Modeling for Machine Learning on the D-Wave}
+@article{Thulasidasan2016,
+title = {Generative Modeling for Machine Learning on the D-Wave},
+author = {Thulasidasan, Sunil},
+abstractNote = {These are slides on Generative Modeling for Machine Learning on the D-Wave. The following topics are detailed: generative models; Boltzmann machines: a generative model; restricted Boltzmann machines; learning parameters: RBM training; practical ways to train RBM; D-Wave as a Boltzmann sampler; mapping RBM onto the D-Wave; Chimera restricted RBM; mapping binary RBM to Ising model; experiments; data; D-Wave effective temperature, parameters noise, etc.; experiments: contrastive divergence (CD) 1 step; after 50 steps of CD; after 100 steps of CD; D-Wave (experiments 1, 2, 3); D-Wave observations.},
+doi = {10.2172/1332219},
+url = {https://www.osti.gov/biblio/1332219}, journal = {},
+number = ,
+volume = ,
+place = {United States},
+year = {2016},
+month = {11}
 }
-
 @article{Amin_2018,
-	doi = {10.1103/physrevx.8.021050},
-  
-	url = {https://doi.org/10.1103\%2Fphysrevx.8.021050},
-  
-	year = 2018,
-	month = {may},
-  
-	publisher = {American Physical Society ({APS})},
-  
-	volume = {8},
-  
-	number = {2},
-  
-	author = {Mohammad H. Amin and Evgeny Andriyash and Jason Rolfe and Bohdan Kulchytskyy and Roger Melko},
-  
-	title = {Quantum Boltzmann Machine},
-  
-	journal = {Physical Review X}
-
+  title = {Quantum Boltzmann Machine},
+  author = {Amin, Mohammad H. and Andriyash, Evgeny and Rolfe, Jason and Kulchytskyy, Bohdan and Melko, Roger},
+  journal = {Phys. Rev. X},
+  volume = {8},
+  issue = {2},
+  pages = {021050},
+  numpages = {11},
+  year = {2018},
+  month = {May},
+  publisher = {American Physical Society},
+  doi = {10.1103/PhysRevX.8.021050},
+  url = {https://link.aps.org/doi/10.1103/PhysRevX.8.021050}
 }
 
-
-@inproceedings{xiao2022DDGAN,
-    title={Tackling the Generative Learning Trilemma with Denoising Diffusion {GAN}s},
-    author={Zhisheng Xiao and Karsten Kreis and Arash Vahdat},
-    booktitle={International Conference on Learning Representations (ICLR)},
-    year={2022}
+@article{xiao2022DDGAN,
+  author       = {Zhisheng Xiao and
+                  Karsten Kreis and
+                  Arash Vahdat},
+  title        = {Tackling the Generative Learning Trilemma with Denoising Diffusion
+                  GANs},
+  journal      = {CoRR},
+  volume       = {abs/2112.07804},
+  year         = {2021},
+  url          = {https://arxiv.org/abs/2112.07804},
+  eprinttype    = {arXiv},
+  eprint       = {2112.07804},
+  timestamp    = {Mon, 03 Jan 2022 15:45:35 +0100},
+  biburl       = {https://dblp.org/rec/journals/corr/abs-2112-07804.bib},
+  bibsource    = {dblp computer science bibliography, https://dblp.org}
 }
 
 @article{ho2021cascaded,
@@ -311,11 +325,14 @@ Howpublished = {Advances in Neural Information Processing Systems 30 (NIPS 2017)
   journal={arXiv preprint arXiv:2106.15282},
   year={2021}
 }
-
-@inproceedings{Smolensky1986InformationPI,
-  title={Information processing in dynamical systems: foundations of harmony theory},
-  author={Paul Smolensky},
-  year={1986}
+@article{Smolensky1986InformationPI,
+author = {Smolensky, Paul},
+year = {1986},
+month = {01},
+pages = {},
+title = {Information processing in dynamical systems: Foundations of harmony theory},
+volume = {1},
+journal = {Parallel Distributed Process}
 }
 
 @inproceedings{NIPS1991_33e8075e,
@@ -433,10 +450,9 @@ abstract = {Computational properties of use of biological organisms or to the co
 
  @misc{dwavedocs,
 	author = {},
-	title = {{W}hat is {Q}uantum {A}nnealing? \&#x2014; {D}-{W}ave {S}ystem {D}ocumentation documentation --- docs.dwavesys.com},
+	title = {{W}hat is {Q}uantum {A}nnealing? {D}-{W}ave {S}ystem {D}ocumentation},
 	howpublished = {\url{https://docs.dwavesys.com/docs/latest/c_gs_2.html}},
 	year = {},
-	note = {[Accessed 28-10-2023]},
 }
   @misc{lardinois_2021, title={D-wave plans to build a gate-model quantum computer}, url={https://techcrunch.com/2021/10/05/d-wave-plans-to-build-a-gate-model-quantum-computer/}, journal={TechCrunch}, publisher={TechCrunch}, author={Lardinois, Frederic}, year={2021}, month={Oct}}
   
@@ -446,7 +462,7 @@ title= {CIFAR-10 (Canadian Institute for Advanced Research)},
 journal= {},
 author= {Alex Krizhevsky and Vinod Nair and Geoffrey Hinton},
 year= {},
-url= {http://www.cs.toronto.edu/~kriz/cifar.html},
+howpublished= {http://www.cs.toronto.edu/~kriz/cifar.html},
 abstract= {The CIFAR-10 dataset consists of 60000 32x32 colour images in 10 classes, with 6000 images per class. There are 50000 training images and 10000 test images. 
 
 The dataset is divided into five training batches and one test batch, each with 10000 images. The test batch contains exactly 1000 randomly-selected images from each class. The training batches contain the remaining images in random order, but some training batches may contain more images from one class than another. Between them, the training batches contain exactly 5000 images from each class. },
@@ -454,11 +470,11 @@ keywords= {Dataset},
 terms= {}
 }
 
-@TECHREPORT{Krizhevsky09learningmultiple,
-    author = {Alex Krizhevsky},
-    title = {Learning multiple layers of features from tiny images},
-    institution = {},
-    year = {2009}
+@inproceedings{Krizhevsky09learningmultiple,
+  title={Learning Multiple Layers of Features from Tiny Images},
+  author={Alex Krizhevsky},
+  year={2009},
+  howpublished={https://api.semanticscholar.org/CorpusID:18268744}
 }
 
  @misc{ai_progress_measurement,
@@ -556,7 +572,7 @@ terms= {}
   copyright = {arXiv.org perpetual, non-exclusive license}
 }
 
- @misc{googlecloud, title={Cloud tensor processing units (tpus) &nbsp;|&nbsp; google cloud}, url={https://cloud.google.com/tpu/docs/tpus}, journal={Google}, publisher={Google}} 
+ @misc{googlecloud, title={Cloud tensor processing units (tpus) | google cloud}, howpublished={https://cloud.google.com/tpu/docs/tpus}, journal={Google}, publisher={Google}} 
 
 
 @misc{transfer,
@@ -664,18 +680,22 @@ terms= {}
   year={2020},
   url={https://api.semanticscholar.org/CorpusID:211003955}
 }
- @article{qpugibbs,
-  doi = {10.1038/srep45672},
-  url = {https://doi.org/10.1038/srep45672},
-  year = {2017},
-  month = apr,
-  publisher = {Springer Science and Business Media {LLC}},
+
+@article{qpugibbs,
+  title = {Quantum Enhanced Inference in Markov Logic Networks},
+  author = {Wittek, Peter and Gogolin, Christian},
+  journal = {Scientific Reports},
   volume = {7},
   number = {1},
-  author = {Peter Wittek and Christian Gogolin},
-  title = {Quantum Enhanced Inference in Markov Logic Networks},
-  journal = {Scientific Reports}
+  pages = {45672},
+  year = {2017},
+  doi = {10.1038/srep45672},
+  url = {https://doi.org/10.1038/srep45672},
+  abstract = {Markov logic networks (MLNs) reconcile two opposing schools in machine learning and artificial intelligence: causal networks, which account for uncertainty extremely well, and first-order logic, which allows for formal deduction. An MLN is essentially a first-order logic template to generate Markov networks. Inference in MLNs is probabilistic and it is often performed by approximate methods such as Markov chain Monte Carlo (MCMC) Gibbs sampling. An MLN has many regular, symmetric structures that can be exploited at both first-order level and in the generated Markov network. We analyze the graph structures that are produced by various lifting methods and investigate the extent to which quantum protocols can be used to speed up Gibbs sampling with state preparation and measurement schemes. We review different such approaches, discuss their advantages, theoretical limitations, and their appeal to implementations. We find that a straightforward application of a recent result yields exponential speedup compared to classical heuristics in approximate probabilistic inference, thereby demonstrating another example where advanced quantum resources can potentially prove useful in machine learning.},
+  issn = {2045-2322},
+  date = {2017-04-19},
 }
+
 @article{quantumCNN,
 author = {Wei, Shijie and Chen, Yanhu and Zhou, ZengRong and Long, GuiLu},
 year = {2022},
