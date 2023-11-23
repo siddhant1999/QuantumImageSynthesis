@@ -215,7 +215,7 @@ GANs are trained via an adversarial contest between the generator model (G) and 
 
 \begin{figure}[h]
     \includegraphics[width=0.9\columnwidth]{GANs.png}
-    \caption{\label{fig:GAN} GANs Architecture \cite{pathmind}}
+    \caption{\label{fig:GAN} GANs Architecture \cite{Yan2021}}
 \end{figure}
 
 
@@ -260,7 +260,7 @@ L := \mathbf{E}_q[-\mathrm{log} p(x_T) - \sum_{t\ge1}\mathrm{log} \frac{p_\theta
 \end{equation}
 
 
-Using a U-Net, a CNN with upsampling, with stochastic gradient descent and $T=1000$, Ho et al. were able to generate samples with an impressive, but not state-of-the-art, FID score of 0.317 on the CIFAR10 dataset. On CelebA-HQ 256 x 256 the team generated the novel images in Figure~\ref{fig: DDPMCeleb}.
+Using a U-Net, a CNN with upsampling, with stochastic gradient descent and $T=1000$, Ho et al. were able to generate samples with an impressive, but not state-of-the-art, FID score of 0.317 on the CIFAR10 dataset. On CelebA-HQ 256 x 256 the team generated the novel images in Figure~\ref{fig:DDPMCeleb}.
 
 \begin{figure}[h]
     \includegraphics[width=0.6\columnwidth]{celeb.png}
