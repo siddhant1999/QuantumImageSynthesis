@@ -1,0 +1,210 @@
+\begin{thebibliography}{999}
+
+\bibitem[Ho et~al.(2020)Ho, Jain, and Abbeel]{ho2020denoising}
+Ho, J.; Jain, A.; Abbeel, P.
+\newblock Denoising Diffusion Probabilistic Models.
+\newblock In Proceedings of the Advances in Neural Information Processing
+  Systems; Larochelle, H.; Ranzato, M.; Hadsell, R.; Balcan, M.; Lin, H., Eds.
+  Curran Associates, Inc.,  2020, Vol.~33, pp. 6840--6851.
+
+\bibitem[Dhariwal and Nichol(2021)]{dhariwal2021diffusion}
+Dhariwal, P.; Nichol, A.
+\newblock Diffusion Models Beat GANs on Image Synthesis,  2021,
+  \href{http://xxx.lanl.gov/abs/2105.05233}{{\normalfont
+  [arXiv:cs.LG/2105.05233]}}.
+
+\bibitem[Jain et~al.(2020)Jain, Ziauddin, Leonchyk, Yenkanchi, and
+  Geraci]{Jain2020}
+Jain, S.; Ziauddin, J.; Leonchyk, P.; Yenkanchi, S.; Geraci, J.
+\newblock Quantum and classical machine learning for the classification of
+  non-small-cell lung cancer patients.
+\newblock {\em {SN} Applied Sciences} {\bf 2020}, {\em 2}.
+\newblock {\url{https://doi.org/10.1007/s42452-020-2847-4}}.
+
+\bibitem[Thulasidasan()]{Thulasidasan2016}
+Thulasidasan, S.
+\newblock Generative Modeling for Machine Learning on the D-Wave.
+\newblock {\url{https://doi.org/10.2172/1332219}}.
+
+\bibitem[Amin et~al.(2018)Amin, Andriyash, Rolfe, Kulchytskyy, and
+  Melko]{Amin_2018}
+Amin, M.H.; Andriyash, E.; Rolfe, J.; Kulchytskyy, B.; Melko, R.
+\newblock Quantum Boltzmann Machine.
+\newblock {\em Phys. Rev. X} {\bf 2018}, {\em 8},~021050.
+\newblock {\url{https://doi.org/10.1103/PhysRevX.8.021050}}.
+
+\bibitem[Xiao et~al.(2021)Xiao, Kreis, and Vahdat]{xiao2022DDGAN}
+Xiao, Z.; Kreis, K.; Vahdat, A.
+\newblock Tackling the Generative Learning Trilemma with Denoising Diffusion
+  GANs.
+\newblock {\em CoRR} {\bf 2021}, {\em abs/2112.07804},
+  \href{http://xxx.lanl.gov/abs/2112.07804}{{\normalfont [2112.07804]}}.
+
+\bibitem[Smolensky(1986)]{Smolensky1986InformationPI}
+Smolensky, P.
+\newblock Information processing in dynamical systems: Foundations of harmony
+  theory.
+\newblock {\em Parallel Distributed Process} {\bf 1986}, {\em 1}.
+
+\bibitem[Freund and Haussler(1991)]{NIPS1991_33e8075e}
+Freund, Y.; Haussler, D.
+\newblock Unsupervised learning of distributions on binary vectors using two
+  layer networks.
+\newblock In Proceedings of the Advances in Neural Information Processing
+  Systems; Moody, J.; Hanson, S.; Lippmann, R., Eds. Morgan-Kaufmann,  1991,
+  Vol.~4.
+
+\bibitem[Hopfield(1982)]{hopfield}
+Hopfield, J.J.
+\newblock Neural networks and physical systems with emergent collective
+  computational abilities.
+\newblock {\em Proceedings of the National Academy of Sciences} {\bf 1982},
+  {\em 79},~2554--2558,
+  \href{http://xxx.lanl.gov/abs/https://www.pnas.org/doi/pdf/10.1073/pnas.79.8.2554}{{\normalfont
+  [https://www.pnas.org/doi/pdf/10.1073/pnas.79.8.2554]}}.
+\newblock {\url{https://doi.org/10.1073/pnas.79.8.2554}}.
+
+\bibitem[Hinton(2012)]{Hinton2012}
+Hinton, G.E.
+\newblock A Practical Guide to Training Restricted Boltzmann Machines. In {\em
+  Lecture Notes in Computer Science}; Springer Berlin Heidelberg,  2012; pp.
+  599--619.
+\newblock {\url{https://doi.org/10.1007/978-3-642-35289-8_32}}.
+
+\bibitem[Carreira-Perpi{\~n}{\'a}n and Hinton(2005)]{CarreiraPerpin2005OnCD}
+Carreira-Perpi{\~n}{\'a}n, M.{\'A}.; Hinton, G.E.
+\newblock On Contrastive Divergence Learning.
+\newblock In Proceedings of the AISTATS,  2005.
+
+\bibitem[Kingma and Welling(2014)]{kingma2014autoencoding}
+Kingma, D.P.; Welling, M.
+\newblock Auto-Encoding Variational Bayes,  2014,
+  \href{http://xxx.lanl.gov/abs/1312.6114}{{\normalfont
+  [arXiv:stat.ML/1312.6114]}}.
+
+\bibitem[Rocca(2021)]{rocca_2021}
+Rocca, J.
+\newblock Understanding variational autoencoders (VAES).
+\newblock
+  https://towardsdatascience.com/understanding-variational-autoencoders-vaes-f70510919f73,
+   2021.
+
+\bibitem[Goodfellow et~al.(2014)Goodfellow, Pouget-Abadie, Mirza, Xu,
+  Warde-Farley, Ozair, Courville, and Bengio]{goodfellow2014generative}
+Goodfellow, I.J.; Pouget-Abadie, J.; Mirza, M.; Xu, B.; Warde-Farley, D.;
+  Ozair, S.; Courville, A.; Bengio, Y.
+\newblock Generative Adversarial Networks,  2014,
+  \href{http://xxx.lanl.gov/abs/1406.2661}{{\normalfont
+  [arXiv:stat.ML/1406.2661]}}.
+
+\bibitem[pat()]{pathmind}
+A beginner's guide to generative adversarial networks (gans).
+\newblock https://wiki.pathmind.com/generative-adversarial-network-gan.
+
+\bibitem[Arjovsky and Bottou(2017)]{google}
+Arjovsky, M.; Bottou, L.
+\newblock Towards Principled Methods for Training Generative Adversarial
+  Networks,  2017,  \href{http://xxx.lanl.gov/abs/1701.04862}{{\normalfont
+  [arXiv:stat.ML/1701.04862]}}.
+
+\bibitem[Hinton(2002)]{trainingrbms}
+Hinton, G.E.
+\newblock Training Products of Experts by Minimizing Contrastive Divergence.
+\newblock {\em Neural Comput.} {\bf 2002}, {\em 14},~1771–1800.
+\newblock {\url{https://doi.org/10.1162/089976602760128018}}.
+
+\bibitem[dwa()]{dwavedocs}
+{W}hat is {Q}uantum {A}nnealing? {D}-{W}ave {S}ystem {D}ocumentation.
+\newblock \url{https://docs.dwavesys.com/docs/latest/c_gs_2.html}.
+
+\bibitem[Lu et~al.(2023)Lu, Liu, Song, Wen, and Wang]{monte}
+Lu, B.; Liu, L.; Song, J.Y.; Wen, K.; Wang, C.
+\newblock Recent progress on coherent computation based on quantum squeezing.
+\newblock {\em {AAPPS} Bulletin} {\bf 2023}, {\em 33}.
+\newblock {\url{https://doi.org/10.1007/s43673-023-00077-4}}.
+
+\bibitem[Wittek and Gogolin(2017)]{qpugibbs}
+Wittek, P.; Gogolin, C.
+\newblock Quantum Enhanced Inference in Markov Logic Networks.
+\newblock {\em Scientific Reports} {\bf 2017}, {\em 7},~45672.
+\newblock {\url{https://doi.org/10.1038/srep45672}}.
+
+\bibitem[Li and Deng(2022)]{classifiers}
+Li, W.; Deng, D.L.
+\newblock Recent advances for quantum classifiers.
+\newblock {\em Science China Physics, Mechanics & Astronomy} {\bf 2022}, {\em
+  65},~220301.
+\newblock {\url{https://doi.org/10.1007/s11433-021-1793-6}}.
+
+\bibitem[Wei et~al.(2022)Wei, Chen, Zhou, and Long]{quantumCNN}
+Wei, S.; Chen, Y.; Zhou, Z.; Long, G.
+\newblock A quantum convolutional neural network on NISQ devices.
+\newblock {\em AAPPS Bulletin} {\bf 2022}, {\em 32}.
+\newblock {\url{https://doi.org/10.1007/s43673-021-00030-3}}.
+
+\bibitem[Sleeman et~al.(2020)Sleeman, Dorband, and Halem]{qmlimggen}
+Sleeman, J.; Dorband, J.E.; Halem, M.
+\newblock A hybrid quantum enabled RBM advantage: convolutional autoencoders
+  for quantum image compression and generative learning {\bf 2020}.
+
+\bibitem[Krizhevsky et~al.()Krizhevsky, Nair, and Hinton]{CIFAR}
+Krizhevsky, A.; Nair, V.; Hinton, G.
+\newblock CIFAR-10 (Canadian Institute for Advanced Research).
+
+\bibitem[Krizhevsky(2009)]{Krizhevsky09learningmultiple}
+Krizhevsky, A.
+\newblock Learning Multiple Layers of Features from Tiny Images.
+\newblock  2009.
+
+\bibitem[Peter~Eckersley(2017)]{ai_progress_measurement}
+Peter~Eckersley, Y.N.e.a.
+\newblock EFF AI Progress Measurement Project,  2017.
+
+\bibitem[Mack(2019)]{mack_2019}
+Mack, D.
+\newblock A simple explanation of the inception score,  2019.
+
+\bibitem[Szegedy et~al.(2015)Szegedy, Vanhoucke, Ioffe, Shlens, and
+  Wojna]{inception_model}
+Szegedy, C.; Vanhoucke, V.; Ioffe, S.; Shlens, J.; Wojna, Z.
+\newblock Rethinking the Inception Architecture for Computer Vision,  2015.
+\newblock {\url{https://doi.org/10.48550/ARXIV.1512.00567}}.
+
+\bibitem[Salimans et~al.(2016)Salimans, Goodfellow, Zaremba, Cheung, Radford,
+  and Chen]{isscore}
+Salimans, T.; Goodfellow, I.; Zaremba, W.; Cheung, V.; Radford, A.; Chen, X.
+\newblock Improved Techniques for Training GANs,  2016.
+\newblock {\url{https://doi.org/10.48550/ARXIV.1606.03498}}.
+
+\bibitem[Heusel et~al.(2017{\natexlab{a}})Heusel, Ramsauer, Unterthiner,
+  Nessler, and Hochreiter]{NIPS2017_8a1d6947}
+Heusel, M.; Ramsauer, H.; Unterthiner, T.; Nessler, B.; Hochreiter, S.
+\newblock GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash
+  Equilibrium.
+\newblock In Proceedings of the Advances in Neural Information Processing
+  Systems; Guyon, I.; Luxburg, U.V.; Bengio, S.; Wallach, H.; Fergus, R.;
+  Vishwanathan, S.; Garnett, R., Eds. Curran Associates, Inc.,  2017, Vol.~30.
+
+\bibitem[Heusel et~al.(2017{\natexlab{b}})Heusel, Ramsauer, Unterthiner,
+  Nessler, and Hochreiter]{fid_gan}
+Heusel, M.; Ramsauer, H.; Unterthiner, T.; Nessler, B.; Hochreiter, S.
+\newblock GANs Trained by a Two Time-Scale Update Rule Converge to a Local Nash
+  Equilibrium {\bf 2017}.
+\newblock {\url{https://doi.org/10.48550/ARXIV.1706.08500}}.
+
+\bibitem[Bińkowski et~al.(2018)Bińkowski, Sutherland, Arbel, and
+  Gretton]{MMD_KID}
+Bińkowski, M.; Sutherland, D.J.; Arbel, M.; Gretton, A.
+\newblock Demystifying MMD GANs,  2018.
+\newblock {\url{https://doi.org/10.48550/ARXIV.1801.01401}}.
+
+\bibitem[goo()]{googlecloud}
+Cloud tensor processing units (tpus) | google cloud.
+\newblock https://cloud.google.com/tpu/docs/tpus.
+
+\bibitem[Dhillon et~al.(2009)Dhillon, Foster, and Ungar]{transfer}
+Dhillon, P.S.; Foster, D.; Ungar, L.
+\newblock Transfer Learning Using Feature Selection,  2009.
+\newblock {\url{https://doi.org/10.48550/ARXIV.0905.4022}}.
+
+\end{thebibliography}
