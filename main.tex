@@ -59,7 +59,7 @@
 
 % \preprint{APS/123-QED}
 
-\title{Comparing Classical and Quantum Generative Learning models for High-Fidelity Image Synthesis}% Force line breaks with \\
+\title{Comparing Classical and Quantum Generative Learning Models for High-Fidelity Image Synthesis}% Force line breaks with \\
 % \thanks{A footnote to the article title}%
 
 \author{Siddhant Jain}
@@ -80,7 +80,7 @@
  Queen's University Department of Pathology and Molecular Medicine\\
 }%
 \affiliation{ 
-Univsersity of California San Diego, Visiting Scientist for Quantum Computation and Neuroscience\\
+University of California San Diego, Visiting Scientist for Quantum Computation and Neuroscience\\
 }%
 \affiliation{Medical College of Georgia, Center for Biotechnology and Genomics Medicine\\
 }%
@@ -115,13 +115,13 @@ The results of our study indicate that QBMs do not significantly outperform the 
 \section{Introduction}
 \subsection{Generative modelling}
 \noindent
-Generative modelling is a class of machine learning that aims to generate novel samples from an existing dataset. Image synthesis is a subset of generative modelling applications relating to the generation of novel high-fidelity images that mimic an underlying distribution of images, known as the training set. The main types of generative models are Generative Adversarial Networks (GANs), Probabilistic models, and Variational Autoencoders (VAE), all of which are capable of high-fidelity image synthesis \cite{weng2021diffusion}. In 2020, a new methodology for producing image synthesis using diffusion models was shown to produce high-quality images \cite{ho2020denoising}. In 2021, OpenAI demonstrated Denoising Diffusion Probabilistic Models' (DDPM) superiority in generating higher image sample quality than the previous state-of-the-art GANs \cite{dhariwal2021diffusion}. 
+Generative modelling is a class of machine learning that aims to generate novel samples from an existing dataset. Image synthesis is a subset of generative modelling applications relating to the generation of novel high-fidelity images that mimic an underlying distribution of images, known as the training set. The main types of generative models are Generative Adversarial Networks (GANs), Probabilistic models, and Variational Autoencoders (VAE), all of which are capable of high-fidelity image synthesis. In 2020, a new methodology for producing image synthesis using diffusion models was shown to produce high-quality images \cite{ho2020denoising}. In 2021, OpenAI demonstrated Denoising Diffusion Probabilistic Models' (DDPM) superiority in generating higher image sample quality than the previous state-of-the-art GANs \cite{dhariwal2021diffusion}. 
 
-Quantum annealers, namely the D-Wave 2000Q have also been shown to perform generative modelling with varied success \cite{Jain2020}\cite{Thulasidasan2016}. By taking advantage of quantum sampling and parallelization D-Wave 2000Q can hold an embedding of the latent space relating to a set of training data in an architecture of coupled Qubits \cite{Amin_2018}. There are still significant research gaps relating to utilizing generative modelling on the quantum processing unit for image synthesis, especially as it relates to measuring their performance against other generative models on standard scoring methods, namely: Inception score, FID, and KID. This research aims to close this gap by investigating the efficacy of the D-Wave 2000Q quantum annealer on the problem of image synthesis.
+Quantum annealers, namely the D-Wave 2000Q have also been shown to perform generative modelling with varied success \cite{Jain2020}\cite{Thulasidasan2016}. By taking advantage of quantum sampling and parallelization D-Wave 2000Q can hold an embedding of the latent space relating to a set of training data in an architecture of coupled qubits \cite{Amin_2018}. There are still significant research gaps relating to utilizing generative modelling on the quantum processing unit for image synthesis, especially as it relates to measuring their performance against other generative models on standard scoring methods, namely the Inception score, FID, and KID. This research aims to close this gap by investigating the efficacy of the D-Wave 2000Q quantum annealer on the problem of image synthesis.
 
 \subsection{Trilemma of Generative Learning}
 \label{trilemmaGL}
-Xiao et al. describe the Trilemma of Generative Learning as the inability of any single deep generative modelling framework to solve the following requirements for wide adoption and application of image synthesis: (i) high-quality sampling, (ii) mode coverage and sample diversity, and (iii) fast and computationally inexpensive sampling \cite{xiao2022DDGAN}. Current research primarily focuses on high-quality image generation and ignores the real-world sampling constraints and the need for high diversity and mode coverage. Fast sampling allows for the generative models to be utilized in greater fast-learning applications, which require quick image synthesis, e.g. interactive image editing \cite{xiao2022DDGAN}. Diversity and mode coverage ensure generated images are not direct copies of, but are also not significantly skewed from, the training data.
+Xiao et al. describe the Trilemma of Generative Learning as the inability of any single deep generative modelling framework to solve the following requirements for wide adoption and application of image synthesis: (i) high-quality sampling, (ii) mode coverage & sample diversity, and (iii) fast and computationally inexpensive sampling \cite{xiao2022DDGAN}. Current research primarily focuses on high-quality image generation and ignores the real-world sampling constraints and the need for high diversity and mode coverage. Fast sampling allows for the generative models to be utilized in greater fast-learning applications, which require quick image synthesis, e.g. interactive image editing \cite{xiao2022DDGAN}. Diversity and mode coverage ensure generated images are not direct copies of, but are also not significantly skewed from, the training data.
 
 \begin{figure}[h]
 \includegraphics[width=0.9\columnwidth]{trilemma.png}% Here is how to import EPS art
@@ -160,7 +160,7 @@ E(v, h) = -a^Tv -b^Th -v^TWh
 
 
 
-Training is the process of tuning the weights matrix $W$ and bias vectors $a$ \& $b$ on the visible $v$ and hidden $h$ layers respectively. $v$ represents the visible units, i.e. the observed values, a training sample. The network assigns a probability to every possible pair of a visible and a hidden vector via this energy function \cite{Hinton2012}:
+Training is the process of tuning the weights matrix $W$ and bias vectors $a$ \& $b$ on the visible $v$ and hidden $h$ layers respectively. $v$ represents the visible units, i.e. the observed values; a training sample. The network assigns a probability to every possible pair of a visible and a hidden vector via this energy function \cite{Hinton2012}:
 
 \begin{equation}
 p(v, h) = \frac{1}{Z}e^{-E(v,h)}
@@ -180,15 +180,15 @@ Z = \sum_{v,h}e^{-E(v,h)}
 
 
 
-The difficulty in evaluating the partition function $Z$ introduces the need to use Gibbs sampling with Contrastive Divergence Learning, introduced by Hinton et al. in 2005 \cite{CarreiraPerpin2005OnCD}. By utilizing such methods one can train the RBM quickly via gradient descent, similar to other neural networks. By adding more hidden layers a deeper embedding can be contained in the system; such a system is called a Deep Belief Network (DBN).
+The difficulty in evaluating the partition function $Z$ introduces the need to use Gibbs sampling with Contrastive Divergence Learning, introduced by Hinton et al. in 2005 \cite{CarreiraPerpin2005OnCD}. By utilizing such methods one can train the RBM quickly via gradient descent, similar to other neural networks. By adding more hidden layers a deeper embedding can be captured by the model; such a system is called a Deep Belief Network (DBN).
 
 
-RBMs, while of little note in the modern landscape of machine learning research due to their limited performance and relatively slow training times, are of particular note to this research as they have direct parallels with both the architecture of the D-Wave 2000Q quantum processor and the method by which they reduce the total energy of their respective systems. RBMs also have limited application in computer vision but were an important advancement in the field of generative modelling as a whole.
+RBMs, while of little note in the modern landscape of machine learning research due to their limited performance and relatively slow training times, are of particular note to this research as they have direct parallels with both the architecture of the D-Wave 2000Q quantum processor and the method by which they reduce the total energy of their respective systems. RBMs also have limited applications in computer vision but were an important advancement in the field of generative modelling as a whole.
 
 
 
 \subsubsection{Variational Autoencoder}
-A Variational Autoencoder (VAE) is a generative machine learning model developed in 2013 composed of a neural network that is able to generate novel high-fidelity images, text, sound, etc. \cite{kingma2014autoencoding}.
+A Variational Autoencoder (VAE) is a generative machine learning model developed in 2013 composed of a neural network that is able to generate novel high-fidelity images, texts, sounds, etc. \cite{kingma2014autoencoding}.
 
 
 Autoencoders seek to compress an input space into a compressed latent representation from which the original input space can be recovered \cite{kingma2014autoencoding}. Variational autoencoders improve upon traditional Autoencoders by recognizing the input space has an underlying distribution and seeks to learn the parameters of that distribution \cite{kingma2014autoencoding}. Once trained VAEs can be used to generate novel data, similar to the input space, by removing the encoding layers and exploring the latent space \cite{kingma2014autoencoding}. Exploring the latent space is simply treating the latent compression layer as an input layer and observing the output of the VAE for various inputs. VAEs marked the first reliable way to generate somewhat high-fidelity images using machine learning\cite{rocca_2021}.
@@ -215,7 +215,7 @@ GANs are trained via an adversarial contest between the generator model (G) and 
 
 \begin{figure}[h]
     \includegraphics[width=0.9\columnwidth]{GANs.png}
-    \caption{\label{fig:GAN} GANs Architecture \cite{pathmind}}
+    \caption{\label{fig:GAN} GANs Architecture \cite{Yan2021}}
 \end{figure}
 
 
@@ -223,12 +223,12 @@ GANs are trained via an adversarial contest between the generator model (G) and 
 Both G and D are trained simultaneously. This algorithm allows for lock-step improvements to both G and D. Towards the conclusion of training, G becomes a powerful image generator which closely replicates the input space, i.e. training data.
 
 
-GANs have a number of shortcomings that make them difficult to train. Due to the adversarial nature of GAN training the model can face the issue of Vanishing Gradients when the discriminator develops more quickly than the generator consequently correctly predicting every $x$ and leaving no error to train on for the generator \cite{google}. Another common issue is Mode Collapse when the generator learns to generate a particularly successful $x$ such that the discriminator is consistently fooled and the generator continues to only produce that singular $x$ and have no variability in image generation \cite{google}. Both Vanishing Gradients and Mode Collapse are consequences of one of the adversarial models improving faster than the other.
+GANs have several shortcomings that make them difficult to train. Due to the adversarial nature of GAN training the model can face the issue of Vanishing Gradients, when the discriminator develops more quickly than the generator consequently correctly predicting every $x$ and leaving no error to train on for the generator \cite{google}. Another common issue is Mode Collapse when the generator learns to generate a particularly successful $x$ such that the discriminator is consistently fooled and the generator continues to only produce that singular $x$ and has no variability in image generation \cite{google}. Both Vanishing Gradients and Mode Collapse are consequences of one of the adversarial models improving faster than the other.
 
 
 \subsubsection{Denoising Diffusion Probabilistic Model}
 
-DDPMs are a recent development proposed by Jonathan Ho et al. (2020) inspired by nonequilibrium thermodynamics that produces high-fidelity image synthesis using a parameterized Markov chain \cite{ho2020denoising}. Beginning with the training sample, each step of the Markov chain adds a single layer of Gaussian noise. A neural network is trained on parameterizing these additional Gaussian noise layers in order to reverse the process from random noise to a high-fidelity image.
+DDPMs are a recent development proposed by Jonathan Ho et al. (2020) inspired by nonequilibrium thermodynamics that produces high-fidelity image synthesis using a parameterized Markov chain \cite{ho2020denoising}. Beginning with the training sample, each step of the Markov chain adds a single layer of Gaussian noise. A neural network is trained on parameterizing these additional Gaussian noise layers to reverse the process from random noise to a high-fidelity image.
 
 \begin{figure}[h]
     \includegraphics[width=0.9\columnwidth]{ddpm.png}
@@ -260,7 +260,7 @@ L := \mathbf{E}_q[-\mathrm{log} p(x_T) - \sum_{t\ge1}\mathrm{log} \frac{p_\theta
 \end{equation}
 
 
-Using a U-Net, a CNN with upsampling, with stochastic gradient descent and $T=1000$ Ho et al. were able to generate samples with an impressive, but not state-of-the-art, FID score of 0.317 on the CIFAR10 dataset. On CelebA-HQ 256 x 256 the team was able to generate the novel images in Figure~\ref{fig:DDPMCeleb}.
+Using a U-Net, a CNN with upsampling, with stochastic gradient descent and $T=1000$, Ho et al. were able to generate samples with an impressive, but not state-of-the-art, FID score of 0.317 on the CIFAR10 dataset. On CelebA-HQ 256 x 256 the team generated the novel images in Figure~\ref{fig:DDPMCeleb}.
 
 \begin{figure}[h]
     \includegraphics[width=0.6\columnwidth]{celeb.png}
@@ -313,7 +313,7 @@ E(v, h) = - \sum_{i} v_i \cdot a_i - \sum_{j} h_j \cdot b_j - \sum_{i} \sum_{j} 
 
 Recall also that this energy function is intractable for all $v$ and $h$, thus RBMs are trained via Contrastive Divergence \cite{trainingrbms}.
 
-The D-Wave 2000Q via the Ising model is able to minimize an energy function via coupled qubits taking advantage of entanglement.The energy function for the Ising model is the following Hamiltonian:
+The D-Wave 2000Q via the Ising model is able to minimize an energy function via coupled qubits taking advantage of entanglement. The energy function for the Ising model is the following Hamiltonian:
 
 \begin{equation}
 E_{\text{ising}}(\mathbf{s}) = \sum_{i=1}^N h_i s_i + \sum_{i=1}^N \sum_{j=i+1}^N J_{i,j} s_i s_j
@@ -324,7 +324,7 @@ E_{\text{ising}}(\mathbf{s}) = \sum_{i=1}^N h_i s_i + \sum_{i=1}^N \sum_{j=i+1}^
 The $s_i \in \{-1, +1\}$ represents the qubit spin state, with spin up and spin down effectively. $h_i$ is the bias term provided by the external magnetic field, and $J_{i,j}$ captures the coefficients for the coupling between qubits \cite{dwavedocs}. Solving for the ground state of an Ising Model is NP-hard, but by taking advantage of the QPU's ability to better simulate quantum systems we can solve this problem more efficiently \cite{monte}.
 
 
-Clamping neurons is the process of fixing certain qubits to specific values, namely the data being trained on. By clamping the neurons $v$ \& $h$ onto the qubits, applying an external magnetic field equivalent to the biasing parameters $a$ \& $b$, and setting the coupling parameters to match those of $W$ (and to 0 for absent or intralayer edges), the RBM can be effectively translated into a format suitable for a quantum annealer. The resulting model is known as a Quantum Boltzmann Machine (QBM) and is similarly trained using QPU-specific Gibbs Sampling methods \cite{dwavedocs}\cite{qpugibbs}.
+Clamping neurons is the process of affixing certain qubits to specific values, namely the data being trained on. By clamping the neurons $v$ \& $h$ onto the qubits, applying an external magnetic field equivalent to the biasing parameters $a$ \& $b$, and setting the coupling parameters to match those of $W$ (and to 0 for absent or intralayer edges), the RBM can be effectively translated into a format suitable for a quantum annealer. The resulting model is known as a Quantum Boltzmann Machine (QBM) and is similarly trained using QPU-specific Gibbs Sampling methods \cite{dwavedocs}\cite{qpugibbs}.
 
 
 
@@ -365,7 +365,7 @@ Additionally, our research aims to close many of the gaps in Sleeman et al.'s st
 \end{itemize}
 
 \subsection{Data}
-We utilize a standardized dataset,CIFAR-10, for experiments. The CIFAR-10 dataset consists of sixty thousand 32 by 32 three-channel (color) images in ten uniform classes \cite{CIFAR}. The data was initially collected in 2009 by Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton and has become the standard for machine learning research relating to computer vision \cite{Krizhevsky09learningmultiple}. One of the primary reasons CIFAR-10 is so popular is because the small image sizes allow for quick training and testing of new models \cite{ai_progress_measurement}. In addition, the ubiquity of testing models on CIFAR-10 allows researchers to quickly benchmark their model performance against prior research \cite{ai_progress_measurement}.
+We utilize a standardized dataset, CIFAR-10, for all of our experiments. The CIFAR-10 dataset consists of sixty thousand 32 by 32 three-channel (color) images in ten uniform classes \cite{CIFAR}. The data was initially collected in 2009 by Alex Krizhevsky, Vinod Nair, and Geoffrey Hinton and has become the standard for machine learning research relating to computer vision \cite{Krizhevsky09learningmultiple}. One of the primary reasons CIFAR-10 is so popular is because the small image sizes allow for quick training and testing of new models \cite{ai_progress_measurement}. In addition, the ubiquity of testing models on CIFAR-10 allows researchers to quickly benchmark their model performance against prior research \cite{ai_progress_measurement}.
 
 \begin{figure}[h]
     \includegraphics[width=0.9\columnwidth]{cifar10.jpeg}
@@ -382,15 +382,15 @@ To establish a benchmark and facilitate the comparison of results between novel 
 
 \subsection{Quantum Model}
 \label{binarize}
-For the quantum model, the training images were also normalized by mean and variance, identically to the preprocessing for the classical models. Since quantum bits can only be clamped to binary values and not floating point numbers, the data also had to be binarized. This process involved converting each input vector into 100 vectors where the representation of 1s in each row reflected the floating point number between 0-1, as pictured in Figure~\ref{fig:binarize}.
+For the quantum model, the training images were also normalized by mean and variance, identically to the preprocessing for the classical models. Since quantum bits can only be clamped to binary values and not floating point numbers, the data also had to be binarized. This process involves converting each input vector into 100 vectors where the representation of 1s in each row reflected the floating point number between 0-1, as pictured in Figure~\ref{fig: binarize}.
 
 \begin{figure}[h]
     \includegraphics[width=0.9\columnwidth]{binarize.png}
-    \caption{\label{fig:binarize} Binarization of a normalized vector to a set of binary vectors \cite{Jain2020}}
+    \caption{\label{fig: binarize} Binarization of a normalized vector to a set of binary vectors \cite{Jain2020}}
 \end{figure}
 
 
-The D-Wave 2000Q quantum annealer is trained by mapping the architecture of an RBM onto the QPU chimera graph, thus creating a QBM \cite{dwavedocs}. The visible, i.e. input, nodes are clamped with the training data and the hidden layer is sampled from. As we increase sampling we gain a better understanding of the energy landscape and can better update the weights (i.e. inter-qubit coupling coefficients) \cite{Jain2020}.
+The D-Wave 2000Q quantum annealer is trained by mapping the architecture of an RBM onto the QPU Chimera graph, thus creating a QBM \cite{dwavedocs}. The visible, i.e. input, nodes are clamped with the training data and the hidden layer is sampled from. As we increase sampling we gain a better understanding of the energy landscape and can better update the weights (i.e. inter-qubit coupling coefficients) \cite{Jain2020}.
 
 
 Due to limitations with the number of available qubits on the D-Wave 2000Q being 2048, and user resource allocation challenges, our experiments are limited. To resolve this constraint, each image was split into 4 distinct squares along the $x$ and $y$ axes. Thus each training image was 16x16x3 for an input vector size of 768.
@@ -420,46 +420,46 @@ The hyper-parameters were determined by conducting grid search hyper-tuning. Sin
 Inception score measures two primary attributes of the generated images: (i) the fidelity of the images, i.e. the image distinctly belongs to a particular class and (ii) the diversity of the generated images \cite{mack_2019}. The Inception classifier is a convolutional neural network (CNN) built by Google and trained on the ImageNet dataset consisting of 14 million images and 1000 classes \cite{inception_model}.
 
 
-(i) Fidelity is captured by the probability distribution produced as classification output by the Inception classifier on a generated image \cite{mack_2019}. Note, that a highly skewed distribution with a single peak indicates that the Inception classifier is able to identify the image as belonging to a specific class with high confidence. Therefore the image is high fidelity.
+(i) Fidelity is captured by the probability distribution produced as classification output by the Inception classifier on a generated image \cite{mack_2019}. Note, that a highly skewed distribution with a single peak indicates that the Inception classifier is able to identify the image as belonging to a specific class with high confidence. Therefore the image is considered high-fidelity.
 
 
 
-(ii) Diversity is captured by summing all the probability distributions produced for individually generated classes. The uniform nature of the resultant sum of distributions is indicative of the diversity of generated images. E.g. a model trained on CIFAR-10 that only manages to produce high-fidelity images of dogs would severely fail to capture diversity.
+(ii) Diversity is captured by summing all the probability distributions produced for individually generated classes. The uniform nature of the resultant sum of distributions is indicative of the diversity of the generated images. E.g. a model trained on CIFAR-10 that only manages to produce high-fidelity images of dogs would severely fail to be diverse.
 
 
 
 The average of the K-L divergences between the produced probability distribution and the summed distribution is the final Inception score, capturing both diversity and fidelity.
-Rigorously, each generated image $x_i$ is classified using the Inception Classifier to obtain the probability distribution $p(y|x_i)$ over classes $y$\cite{isscore}. Calculate the marginal distribution is provided by: 
+Rigorously, each generated image $x_i$ is classified using the Inception Classifier to obtain the probability distribution $p(y|x_i)$ over classes $y$ \cite{isscore}. The marginal distributions are provided by: 
 
 \begin{equation}
 p(y) = \frac{1}{N} \sum_{i=1}^{N} p(y|x_i)
 \end{equation}
 
-Compute the KL Divergence:
+From which the K-L Divergence may be computed by the following:
 \begin{equation}
     D_{\text{KL}}(p(y|x_i) || p(y)) = \sum_{y} p(y|x_i) \log \left( \frac{p(y|x_i)}{p(y)} \right)\qquad
     \cite{isscore}
 \end{equation}
 
-Take the expected value of these KL Divergences values over all $N$ generated images:
+Take the expected value of these K-L Divergences values over all $N$ generated images:
 
 \begin{equation}
     \mathbb{E}_{x}[D_{\text{KL}}(p(y|x) || p(y))] = \frac{1}{N} \sum_{i=1}^{N} D_{\text{KL}}(p(y|x_i) || p(y))\qquad
 \cite{isscore}
 \end{equation}
 
-Finally we exponentiate the above value to evaluate an Inception score:
+Finally, we exponentiate the value above to evaluate an Inception score:
 \begin{equation}
 \text{IS}(G) = \exp (E_{x\sim pg} \mathcal{D}_{KL}( p(y|x) || p(y) )
 \cite{isscore}
 \end{equation}
 
 \subsubsection{Fréchet Inception Distance (FID)}
-Fréchet Inception Distance improves upon the inception score by capturing the relationship between the generated images against the training images, whereas the inception score only captures the characteristics of the generated images against each other and their classifications. The Inception classifier, used to determine the Inception score, also embeds a feature vector. I.e. the architecture of the Inception Classifier captures the salient features of the images it is trained on.
+Fréchet Inception Distance improves upon the inception score by capturing the relationship between the generated images against the training images, whereas the Inception score only captures the characteristics of the generated images against each other and their classifications. The Inception classifier, used to determine the Inception score, also embeds a feature vector. I.e. the architecture of the Inception Classifier captures the salient features of the images it is trained on.
 
 
 
-The FID score is determined by taking the Wasserstein metric between the two multivariate Gaussian distributions of the feature vectors for the training and generated images on the Inception model \cite{NIPS2017_8a1d6947}. Simply, the dissimilarity between the features found in the training and generated data. This is an improvement upon inception score since it captures the higher level features that would be more human identifiable when comparing model performance. The Gaussian distributions of the feature vector for the generated images and the training images are $N(\mu, \Sigma)$ and $N(\mu_w, \Sigma_w)$ respectively \cite{fid_gan}. The Wasserstein metric, resulting in the FID score is as follows:
+The FID score is determined by taking the Wasserstein metric between the two multivariate Gaussian distributions of the feature vectors for the training and generated images on the Inception model \cite{NIPS2017_8a1d6947}. Simply, the dissimilarity between the features found in the training and generated data. This is an improvement upon the Inception score since it captures the higher-level features that would be more human-identifiable when comparing model performance. The Gaussian distributions of the feature vector for the generated images and the training images are $N(\mu, \Sigma)$ and $N(\mu_w, \Sigma_w)$ respectively \cite{fid_gan}. The Wasserstein metric, resulting in the FID score is as follows:
 
 \begin{equation}
 \text{FID}=||\mu -\mu _{w}||_{2}^{2}+\operatorname {tr} (\Sigma +\Sigma _{w}-2(\Sigma ^{1/2}\Sigma _{w}\Sigma ^{1/2})^{1/2})\qquad
@@ -478,15 +478,15 @@ Specifically, for generator $X$ with probability measure $\mathbb{P}$ and random
 \end{equation}
 
 \subsubsection{Quantitative Metrics}
-The following table summarizes the different metrics we used to evaluate our models:
+The following table summarizes the three quantitative metrics used to evaluate model performance:
 \begin{table}[h]
 \caption{\label{tab:metrics}
-Summary of quantitative metrics for generative image synthesis evaluation \cite{isscore} \cite{fid_gan} \cite{MMD_KID}} 
+Summary of quantitative metrics for generative image synthesis evaluation} 
 \begin{ruledtabular}
     \begin{tabular}{cp{4cm}c}
          Metric& Description &Performance\\ \hline 
- Inception & KL-Divergence between conditional and marginal label distributions over generated data & Higher is better\\ \hline
- FID & Wasserstein-2 distance between multivariate Gaussians fitted to data embedded into a feature space & Lower is better\\ \hline
+ Inception & K-L Divergence between conditional and marginal label distributions over generated data & Higher is better\\ \hline
+ FID & Wasserstein distance between multivariate Gaussians fitted to data embedded into a feature space & Lower is better\\ \hline
  KID & Measures the dissimilarity between two probability distributions $P_r$ and $P_g$ using samples drawn independently from each distribution & Lower is better\\
     \end{tabular}
 \end{ruledtabular}
@@ -494,7 +494,7 @@ Summary of quantitative metrics for generative image synthesis evaluation \cite{
 
 
 \subsubsection{Qualitative Metrics}
-Our qualitative evaluation was performed by analyzing the visual discernment of generated images in relation to their respective classes in a less stringent manner. This approach aims to foster a broader discussion about the applicability of such models and their effectiveness.
+Our qualitative evaluation was performed by analyzing the visual discernment of generated images in relation to their respective classes less stringently. This approach aims to foster a broader discussion about the applicability of such models and their effectiveness.
 
 \section{Results}
 \subsection{Restricted Boltzmann Machine (RBM)}
@@ -519,7 +519,7 @@ Our qualitative evaluation was performed by analyzing the visual discernment of 
 
 
 
-The generated images by the RBM include a high degree of brightly-colored noise. Interestingly this noise is concentrated in sections of the image with high texture, i.e. high variance of pixel values. Notice the image of the cat in the bottom-center on Figure~\ref{fig:rbmout} has a great deal of noise at the edge of and inside the cat itself, but not in the blank white space surrounding it. This demonstrates a high degree of internode interference in the hidden layer. That is, areas with large pixel variance influence the surrounding pixels greatly and often cause bright spots to appear as a result.
+The generated images by the RBM include a high degree of brightly-colored noise. Interestingly this noise is concentrated in sections of the image with high texture, i.e. high variance of pixel values. Notice the image of the cat in the bottom-center on Figure~\ref{fig:rbmout} has a great deal of noise at the edges of and inside the boundaries of the cat itself, but not in the blank white space surrounding it. This demonstrates a high degree of internode interference in the hidden layer. That is, areas with large pixel variance influence the surrounding pixels greatly and often cause bright spots to appear as a result.
 
 \subsection{Variational Autoencoder (VAE)}
 
@@ -577,7 +577,7 @@ The GAN is able to produce some images with high fidelity, namely the cat in the
 \end{figure}
 
 
-The quality of the results for the DDPM is limited by the computational power available to run the experiment. DDPMs have been shown to be state-of-the-art for image generation when scored on fidelity, but require several hours of training on a Tensor Processing Unit (TPU). A TPU can perform one to two orders of magnitude greater operations than an equivalent GPU \cite{googlecloud}. Without access to these Google-exclusive TPUs, we were unable to replicate state-of-the-art generation results.
+The quality of the results for the DDPM are limited by the computational power available to run the experiment. DDPMs are state-of-the-art for image generation when scored on fidelity, but require several hours of training on a Tensor Processing Unit (TPU). A TPU can perform one to two orders of magnitude more operations than an equivalent GPU per second \cite{googlecloud}. Without access to these Google-exclusive TPUs, we were unable to replicate state-of-the-art generation results.
 
 \subsection{Quantum Boltzmann Machine (QBM)}
 \label{qbm_result_}
@@ -612,39 +612,39 @@ Recall the QBM required training images to be split and restitched into 4 indepe
 The following analyses reference the results captured in Table~\ref{tab: results}.
 
 \subsubsection{Inception Score}
-For Inception scores the QBM performed significantly worse than the classical models. This means that the diversity and fidelity of the QBM-generated images were significantly worse than those produced via existing classical methods. The VAE produced an exceptionally high Inception score, suggesting the images were both distinctly single-class labelled and the results produced an equal variety of classed results. Observation of the produced samples is consistent with this score as the produced images are of high fidelity and of varied classes. Note, Figure~\ref{fig:vaeout}, has distinct images of vehicles, animals, planes, etc.
+On Inception scores. the QBM performed significantly worse than the classical models. This means that the diversity and fidelity of the QBM-generated images were significantly worse than those produced via existing classical methods. The VAE produced an exceptionally high Inception score, suggesting the images were both distinctly single-class labelled and the results produced an equal variety of results across classes. Qualitative observation of the produced samples is consistent with this score as the produced images are of high fidelity and varied classes. Note, Figure~\ref{fig:vaeout}, has distinct images of vehicles, animals, planes, etc.
 
 
-Interestingly the DDPM produced a middling Inception score despite producing images that were of exceptionally low fidelity. This is because the Inception score measures the KL-Divergence between the single sample classification probability distribution and the summed distribution. While the image fidelity may be low the overall summed distribution is fairly uniform due to the high variance of results, resulting in a higher KL-Divergence than otherwise expected.
+Interestingly the DDPM produced a middling Inception score despite producing images that were of exceptionally low fidelity. This is because the Inception score measures the K-L Divergence between the single sample classification probability distribution and the summed distribution. While the image fidelity may be low the overall summed distribution is fairly uniform due to the high variance of results, resulting in a higher K-L Divergence than naively expected.
 
 \subsubsection{Fréchet Inception Distance}
-The QBM produced the median FID score on the generated images, performing better than the RBM and DDPM, but worse than the GAN and VAE. Recall the primary difference between the FID score and other metrics is the model's ability to extract and replicate salient features of the training data. The VAE and GAN do this exceptionally well, producing images that have distinct features that are easily observable. Notice Figure~\ref{fig:vaeout} and Figure~\ref{fig:ganout} both contain images that have easily identifiable features, namely the animals and vehicles in each set of generated images. Despite these produced images often mimicking the input image very closely, especially for Figure~\ref{fig:vaeresults}, the FID score only captures the distance between the features present in produced vs. training images, not the diversity of the images themselves.
+The QBM produced the median FID score on the generated images, performing better than the RBM and DDPM, but worse than the GAN and VAE. Recall the primary difference between the FID score and other metrics is the model's ability to extract and replicate salient features of the training data. The VAE and GAN do this exceptionally well, producing images that have distinct features that are easily observable. Notice Figure~\ref{fig:vaeout} and Figure~\ref{fig:ganout} both contain images that have easily identifiable features, namely the animals and vehicles in each set of generated images. Despite these images mimicking the input image very closely, especially for Figure~\ref{fig:vaeresults}, the FID score only captures the distance between the features present in produced vs. training images, not the diversity of the images themselves.
 
 
-Alternatively, the images produced by the DDPM and RBM have a distinct lack of identifiable features. To the human eye Figure~\ref{fig:rbmout} does reflect the general lines and edges of the input found in Figure~\ref{fig:rbmin}, yet the Inception classifier fails to capture these features in its embedding, likely due to the high levels of surrounding noise with bright values. Note, that brightly-colored pixels are caused by large RGB (red-green-blue) values which will have a larger effect upon the convolutional filters which rely on matrix multiplication. This can have an undue negative effect on feature extraction and thus lead to lower FID scores. DDPMs face issues relating to a general lack of features produced. As discussed in \ref{ddpm_result_}, the computational limitations didn't allow for adequate training and can thus account for the lack of effective feature generation.
+Alternatively, the images produced by the DDPM and RBM have a distinct lack of identifiable features. To the human eye Figure~\ref{fig:rbmout} does reflect the general lines and edges of the input found in Figure~\ref{fig:rbmin}, yet the Inception classifier fails to capture these features in its embedding, likely due to the high levels of surrounding noise with bright values. Note, that brightly-colored pixels are caused by large RGB (red-green-blue) values which will have a larger effect upon the convolutional filters which rely on matrix multiplication. This can have an undue negative effect on feature extraction and thus lead to lower FID scores. DDPMs face issues relating to a general lack of distinctive features produced. As discussed in \ref{ddpm_result_}, the computational limitations didn't allow for adequate training and can thus account for the lack of effective feature generation.
 
 
-As discussed in \ref{qbm_result_} the stitching and restitching of images cause features from multiple classes to be present in a single image, despite each feature being of moderately high fidelity.  This restitching has negative consequences on the FID score and given more qubits could be improved upon but clamping entire images to the QPU.
+As discussed in \ref{qbm_result_} the stitching and restitching of images cause features from multiple classes to be present in a single image, despite each feature being of moderately high fidelity.  This restitching has negative consequences on the FID score and given more qubits could be improved upon but clamping entire images to the QPU directly.
 
 
 \subsubsection{Kernel Inception Distance}
 As with the FID score the QBM produced the median score on the generated images, yet skewed lower and thus achieved better results than the DDPM and GAN. The DDPM once again suffers from a lack of computing power and thus performs significantly worse than other models. The VAE and RBM performed exceptionally well indicating the models' superior ability to generate samples that are distributed similarly to the training set.
 
 
-KID is the metric on which the QBM performed comparatively best. This means, that while the QBM lacks the ability to represent features in its generated images well and struggles to produce diverse, high-fidelity images, it is able to capture the underlying distribution of training images with its generated images moderately well. This result is significant because the fidelity of generated images should improve with increases in the number of qubits and better error correction, but a promising KID score is indicative that the QBM is adequately capturing the essence of image generation. Qualitatively, from Figure~\ref{fig:qbmresults} it's clear the QBM is able to capture some meaningful image features from the training set but struggles with fidelity, i.e. distinct objects, clear boundaries, textured backgrounds, etc.
+KID is the metric on which the QBM performed comparatively best. This means, that while the QBM lacks the ability to represent features in its generated images well and struggles to produce diverse, high-fidelity images, it can capture the underlying distribution of training images with its generated images moderately well. This result is significant because the fidelity of generated images should improve with increases in the number of qubits and better error correction, but a promising KID score is indicative that the QBM is adequately capturing the essence of image generation. Qualitatively, from Figure~\ref{fig:qbmresults} it is clear the QBM can capture some meaningful image features from the training set but struggles with fidelity, i.e. distinct objects, clear boundaries, textured backgrounds, etc.
 
 \subsection{Feature Extraction}
 Since QBMs and RBMs both lack convolutional layers which are especially effective at capturing image features via convolution and image filters, it's expected that they would in turn score poorly for FID scores. This limitation of RBMs and QBMs can be solved by transfer learning. Transfer learning allows a pre-trained model to be detached between two layers and then reconnected to an untrained model. That way the embeddings, i.e. learned weights of the pre-trained model can improve the performance of the untrained model \cite{transfer}. Transfer learning with the convolutional layers from a CNN can be detached and reattached to the visible nodes of the RBM and QBM. However for this strategy to work as intended with the QBM a binarization layer, discussed in \ref{binarize},  would need to interface between the output of the CNN layers and the visible nodes.
 
 
 \subsection{Trilemma of Generative Learning}
-Recall the trilemma consists of the following: ``(i) high-quality sampling, (ii) mode coverage and sample diversity, and (iii) fast and computationally inexpensive sampling." \cite{xiao2022DDGAN}.
+Recall the trilemma consists of the following: ``(i) high-quality sampling, (ii) mode coverage \& sample diversity, and (iii) fast and computationally inexpensive sampling." \cite{xiao2022DDGAN}.
 
 \subsubsection{High-Quality Sampling}
 High-quality sampling is captured by FID and Inception scores. The QBM performed terribly on the Inception score and only moderately well on FID scores. Thus it would be inaccurate to say the quantum annealer is uniquely producing high-quality samples. We hypothesize the main contributor to this result is the lack of convolutional layers and the image stitching required for training. This will be further discussed in \ref{future}.
 
 \subsubsection{Mode Coverage \& Diversity}
-Mode Coverage and Diversity are captured by Inception and KID scores. While the QBM performed poorly on the Inception score, the KID score was promising. From qualitative observations of the generative images it seems the QBM is managing to produce a diversity of images representative of the training data. The Inception score is likely low due to image stitching causing the Inception classifier to fail at classifying the images into one class.
+Mode Coverage and Diversity are captured by Inception and KID scores. While the QBM performed poorly on the Inception score, the KID score was promising. From qualitative observations of the generated images, it seems the QBM is managing to produce a diversity of images representative of the training data. The Inception score is certainly poorer than expected due to image stitching causing the Inception classifier to fail at classifying the images into one class.
 
 \subsubsection{Fast Sampling}
 The QBM thoroughly and unequivocally fails at fast sampling. The quantum annealer is extremely slow at sampling. This is partially due to hardware constraints, partially due to the high demand for quantum resources, and partially due to computational expensiveness. Regardless, the process of quantum sampling from an annealer is prohibitively slow and expensive. We hope to see this improve over time.
@@ -654,7 +654,7 @@ The QBM currently fails to improve on the Trilemma of Generative Learning (\ref{
 
 \section{Conclusion \& Future Work}
 \label{future}
-In conclusion, our team attempted to determine the efficacy of the D-Wave 2000Q quantum annealer on image synthesis, evaluated by industry-standard metrics compared to classical model counterparts, and determine if QBMs can crack the Trilemma of Generative Learning (\ref{trilemmaGL}). The quantum annealer was utilized via a QBM architecture and evaluated on the following \ref{metrics_}, Inception score, FID, and KID against the following classical models:
+In conclusion, our team attempted to determine the efficacy of the D-Wave 2000Q quantum annealer on image synthesis, evaluated by industry-standard metrics compared to classical model counterparts, and determined if QBMs can crack the Trilemma of Generative Learning (\ref{trilemmaGL}). The quantum annealer, operating under a Quantum Boltzmann Machine (QBM) architecture, was assessed based on several performance metrics, including the Inception score, Fréchet Inception Distance (FID), and Kernel Inception Distance (KID). Its performance was compared against a suite of classical models comprising:
 \begin{itemize}
 \item Restricted Boltzmann Machine
 \item Variational Autoencoder
@@ -663,22 +663,22 @@ In conclusion, our team attempted to determine the efficacy of the D-Wave 2000Q 
 \end{itemize}
 
 
-The quantitative results of these experiments can be found in Table~\ref{tab: results}. The results showed that the QBM struggled to generate images with a high Inception score, but managed to show promise in FID and KID scores indicating an ability to generate images with salient features and a similar distribution to that of the training set.
+The quantitative results of these experiments can be found in Table~\ref{tab: results}. The results showed that the QBM struggled to generate images with a high Inception score, but managed to show promise in FID and KID scores, indicating an ability to generate images with salient features and a similar distribution to that of the training set.
 
 
-The QBM implemented on the D-Wave 2000Q quantum annealer is not significantly better than the state-of-the-art classical models in the field. While the QBM outperformed a few classical models on FID and KID scores, it's important to note the difficulty of comparing models with different architectures trained for different hyper-parameters. The QBM did show great promise in its ability to represent the underlying distribution of the training data in its generated samples and we hope to see this improve with more hardware improvements.
+The QBM implemented on the D-Wave 2000Q quantum annealer is not significantly better than the state-of-the-art classical models in the field. While the QBM outperformed a few classical models on FID and KID scores, it's important to note the difficulty of comparing models with different architectures trained on different hyper-parameters. The QBM did show great promise in its ability to represent the underlying distribution of the training data in its generated samples and we hope to see this improve with more hardware improvements.
 
 \subsection{Image Preprocessing}
 A significant challenge in developing the QBM was the lack of qubits. This limitation forced us to split each image into a set of four squares, as described in \ref{binarize}, leading to the issue of stitching generated images in post. This issue can be somewhat resolved in the future in a few different ways.
 
 
-Firstly, one could wait until hardware improvements are made to the quantum annealer in the form of an increase in the number of qubits and in error-correcting abilities. With these improvements, one should see an increase in image synthesis quality. As more pixels can be embedded directly onto the QPU the need for stitching will diminish and the QBM will be able to encode a richer embedding with features from the entire image in the correct locations.
+Firstly, one could wait until hardware improvements are made to the quantum annealer in the form of an increase in the number of qubits and error-correcting abilities. With these improvements, one should see an increase in image synthesis quality. As more pixels can be embedded directly onto the QPU the need for stitching will diminish and the QBM will be able to encode a richer embedding with features from the entire image in the correct locations.
 
 
-Secondly, a CNN could be introduced and pre-trained via transfer learning. This would limit the input vector size required for the visible nodes for the QBM, thus allowing the CNN to pick up the bulk of the feature extraction. While this would not be a purely ``quantum" solution it would allow for the quantum annealer to specialize in embedding and sampling from a distribution of features as opposed to pixel values. This ought to improve performance as CNNs have been shown to be the gold standard in image processing for machine learning applications.
+Secondly, a CNN could be introduced and pre-trained via transfer learning. This would limit the input vector size required for the visible nodes on the QBM, thus allowing the CNN to pick up the bulk of the feature extraction. While this would not be a purely ``quantum" solution it would allow for the quantum annealer to specialize in embedding and sampling from a distribution of features as opposed to pixel values. This ought to improve performance as CNNs are the gold standard in image processing for machine learning applications.
 
 \subsection{Quantum Computing}
-As quantum annealers improve our team expects the ability to sample more often and in greater numbers will improve. With a greater number of samples, the QBM is able to evaluate a richer energy landscape and capture a more sophisticated objective function topology. With faster sampling additional hyper-tuning could also be performed in a more timely manner allowing for greater convergence upon a more ideal architecture.
+As quantum annealers improve our team expects the ability to sample more often and in greater numbers will improve. With a greater number of samples, the QBM can evaluate a richer energy landscape and capture a more sophisticated objective function topology. With faster sampling additional hyper-tuning could also be performed in a more timely manner allowing for greater convergence upon a more ideal architecture.
 
 \section*{Acknowledgements}
 We'd like to thank D-Wave for providing access to their quantum computing resources as well as their continued support for Quantum Machine Learning research. This research would not be possible without the deep collaboration with Nurosene Health and their Chief Scientific Officer Dr. Joseph Geraci, Assistant Professor at Queen’s Molecular Medicine. Lastly, a special thank you to Prof. Harry Ruda, Stanley Meek Chair in Advanced Nanotechnology, and Professor in the Department of Material Science and Engineering at the University of Toronto, for supervising this research.
