@@ -83,13 +83,13 @@ $^{6}$ \quad Stanley Meek \hl{Chair} in Nanotechnology, \hl{Centre} %MDPI: If th
 \section{Introduction}
 \subsection{Generative Modeling}
  
-Generative modeling is a class of machine learning that aims to generate novel samples from an existing dataset. Image synthesis is a subset of generative modeling applications relating to the generation of novel high-fidelity images that mimic an underlying distribution of images, known as the training set. The main types of generative models are Generative Adversarial Networks (GANs), probabilistic models, and Variational Autoencoders (VAE), all of which are capable of high-fidelity image synthesis. In 2020, a new methodology for producing image synthesis using diffusion models was shown to produce high-quality images~\cite{ho2020denoising}. In 2021, OpenAI demonstrated Denoising Diffusion Probabilistic Models' (DDPM) superiority in generating higher image sample quality than the previous state-of-the-art GANs~\cite{dhariwal2021diffusion}.  %MDPI: Please consider improving the quality for displayed figures from any reference.  
+Generative modelling is a class of machine learning that aims to generate novel samples from an existing dataset. Image synthesis is a subset of generative modelling applications relating to the generation of novel high-fidelity images that mimic an underlying distribution of images, known as the training set. The main types of generative models are Generative Adversarial Networks (GANs), Probabilistic models, and Variational Autoencoders (VAE), all of which are capable of high-fidelity image synthesis. In 2020, a new methodology for producing image synthesis using diffusion models was shown to produce high-quality images \cite{ho2020denoising}. In 2021, OpenAI demonstrated Denoising Diffusion Probabilistic Models' (DDPM) superiority in generating higher image sample quality than the previous state-of-the-art GANs \cite{dhariwal2021diffusion}.   %MDPI: Please consider improving the quality for displayed figures from any reference.  
 
-Quantum annealers, namely the D-Wave 2000Q, have also been shown to perform generative modeling with varied success~\cite{Jain2020,Thulasidasan2016}. By taking advantage of quantum sampling and parallelization, D-Wave 2000Q can hold an embedding of the latent space relating to a set of training data in an architecture of coupled qubits~\cite{Amin_2018}. There are still significant research gaps relating to utilizing generative modeling on the quantum processing unit for image synthesis, especially as it relates to measuring their performance against other generative models on standard scoring methods, namely the Inception score, FID, and KID. This research aims to close this gap by investigating the efficacy of the D-Wave 2000Q quantum annealer on the problem of image synthesis.
+Quantum annealers, namely the D-Wave 2000Q have also been shown to perform generative modelling with varied success \cite{Jain2020}\cite{Thulasidasan2016}. By taking advantage of quantum sampling and parallelization D-Wave 2000Q can hold an embedding of the latent space relating to a set of training data in an architecture of coupled qubits \cite{Amin_2018}. There are still significant research gaps relating to utilizing generative modelling on the quantum processing unit for image synthesis, especially as it relates to measuring their performance against other generative models on standard scoring methods, namely the Inception score, FID, and KID. This research aims to close this gap by investigating the efficacy of the D-Wave 2000Q quantum annealer on the problem of image synthesis.
 
 \subsection{Trilemma of Generative Learning}
 \label{trilemmaGL}
-Xiao et al. describe the Trilemma of Generative Learning as the inability of any single deep generative modeling framework to solve the following requirements for wide adoption and application of image synthesis: (i) high-quality sampling, (ii) mode coverage and sample diversity, and (iii) fast and computationally inexpensive sampling~\cite{xiao2022DDGAN}. Current research primarily focuses on high-quality image generation and ignores the real-world sampling constraints and the need for high diversity and mode coverage. Fast sampling allows for the generative models to be utilized in greater fast-learning applications, which require quick image synthesis, e.g., interactive image editing~\cite{xiao2022DDGAN}. Diversity and mode coverage ensure generated images are not direct copies of, but are also not significantly skewed from, the training data.
+Xiao et al. describe the Trilemma of Generative Learning as the inability of any single deep generative modelling framework to solve the following requirements for wide adoption and application of image synthesis: (i) high-quality sampling, (ii) mode coverage & sample diversity, and (iii) fast and computationally inexpensive sampling \cite{xiao2022DDGAN}. Current research primarily focuses on high-quality image generation and ignores the real-world sampling constraints and the need for high diversity and mode coverage. Fast sampling allows for the generative models to be utilized in greater fast-learning applications, which require quick image synthesis, e.g. interactive image editing \cite{xiao2022DDGAN}. Diversity and mode coverage ensure generated images are not direct copies of, but are also not significantly skewed from, the training data.
 
 \begin{figure}[H]
 \includegraphics[width=0.9\columnwidth]{trilemma.png}% Here is how to import EPS art
@@ -131,7 +131,7 @@ E(v, h) = -a^Tv -b^Th -v^TWh
 
 
 
-Training is the process of tuning the weights matrix $W$ and bias vectors $a$ and $b$ on the visible $v$ and hidden $h$ layers, respectively. $v$ represents the visible units, i.e., the observed values or a training sample. The network assigns a probability to every possible pair of a visible and a hidden vector via this energy function~\cite{Hinton2012}: 
+Training is the process of tuning the weights matrix $W$ and bias vectors $a$ \& $b$ on the visible $v$ and hidden $h$ layers respectively. $v$ represents the visible units, i.e. the observed values; a training sample. The network assigns a probability to every possible pair of a visible and a hidden vector via this energy function \cite{Hinton2012}: 
 \begin{equation}
 p(v, h) = \frac{1}{Z}e^{-E(v,h)}
 \end{equation}
@@ -148,15 +148,15 @@ Z = \sum_{v,h}e^{-E(v,h)}
 
 
 
-The difficulty in evaluating the partition function $Z$ introduces the need to use Gibbs sampling with Contrastive Divergence Learning, introduced by Hinton et al. in 2005~\cite{CarreiraPerpin2005OnCD}. By utilizing such methods, one can train the RBM quickly via gradient descent, similar to other neural networks. By adding more hidden layers, a deeper embedding can be captured by the model; such a system is called a Deep Belief Network (DBN).
+The difficulty in evaluating the partition function $Z$ introduces the need to use Gibbs sampling with Contrastive Divergence Learning, introduced by Hinton et al. in 2005 \cite{CarreiraPerpin2005OnCD}. By utilizing such methods one can train the RBM quickly via gradient descent, similar to other neural networks. By adding more hidden layers a deeper embedding can be captured by the model; such a system is called a Deep Belief Network (DBN).
 
 
-RBMs, while of little note in the modern landscape of machine learning research due to their limited performance and relatively slow training times, are of particular note to this research, as they have direct parallels with both the architecture of the D-Wave 2000Q quantum processor and the method by which they reduce the total energy of their respective systems. RBMs also have limited applications in computer vision but were an important advancement in the field of generative modeling as a whole.
+RBMs, while of little note in the modern landscape of machine learning research due to their limited performance and relatively slow training times, are of particular note to this research as they have direct parallels with both the architecture of the D-Wave 2000Q quantum processor and the method by which they reduce the total energy of their respective systems. RBMs also have limited applications in computer vision but were an important advancement in the field of generative modelling as a whole.
 
 
 
 \subsubsection{Variational Autoencoder}
-A Variational Autoencoder (VAE) is a generative machine learning model developed in 2013 composed of a neural network that is able to generate novel high-fidelity images, texts, sounds, etc.~\cite{kingma2014autoencoding}.
+A Variational Autoencoder (VAE) is a generative machine learning model developed in 2013 composed of a neural network that is able to generate novel high-fidelity images, texts, sounds, etc. \cite{kingma2014autoencoding}.
 
 
 Autoencoders seek to compress an input space into a compressed latent representation from which the original input space can be recovered~\cite{kingma2014autoencoding}. Variational Autoencoders improve upon traditional Autoencoders by recognizing the input space has an underlying distribution and seeks to learn the parameters of that distribution~\cite{kingma2014autoencoding}. Once trained, VAEs can be used to generate novel data, similar to the input space, by removing the encoding layers and exploring the latent space~\cite{kingma2014autoencoding}. Exploring the latent space is simply treating the latent compression layer as an input layer and observing the output of the VAE for various inputs. VAEs marked the first reliable way to generate somewhat high-fidelity images using machine learning \cite{rocca_2021}.
@@ -184,7 +184,7 @@ GANs are trained via an adversarial contest between the generator model (G) and 
 \begin{figure}[H]
     \includegraphics[width=\columnwidth]{GANs.png}
     \caption{\hl{GANs} %MDPI: Please cite the figure in the text and ensure the first citation of each figure appears in numerical order. 
- \hl{architecture}~\cite{pathmind}.\label{fig:GAN}}
+ \hl{architecture}~\cite{Yan2021}.\label{fig:GAN}}
 \end{figure}
 
 
@@ -192,12 +192,12 @@ GANs are trained via an adversarial contest between the generator model (G) and 
 Both G and D are trained simultaneously. This algorithm allows for lock-step improvements to both G and D. Towards the conclusion of training, G becomes a powerful image generator, which closely replicates the input space, i.e., training data.
 
 
-GANs have several shortcomings that make them difficult to train. Due to the adversarial nature of GANs, training the model can face the issue of Vanishing Gradients, when the discriminator develops more quickly than the generator, consequently correctly predicting every $x$ and leaving no error to train on for the generator~\cite{google}. Another common issue is Mode Collapse, when the generator learns to generate a particularly successful $x$ such that the discriminator is consistently fooled and the generator continues to only produce that singular $x$ and has no variability in image generation~\cite{google}. Both Vanishing Gradients and Mode Collapse are consequences of one of the adversarial models improving faster than the other.
+GANs have several shortcomings that make them difficult to train. Due to the adversarial nature of GAN training the model can face the issue of Vanishing Gradients, when the discriminator develops more quickly than the generator consequently correctly predicting every $x$ and leaving no error to train on for the generator \cite{google}. Another common issue is Mode Collapse when the generator learns to generate a particularly successful $x$ such that the discriminator is consistently fooled and the generator continues to only produce that singular $x$ and has no variability in image generation \cite{google}. Both Vanishing Gradients and Mode Collapse are consequences of one of the adversarial models improving faster than the other.
 
 
 \subsubsection{Denoising Diffusion Probabilistic Model}
 
-DDPMs are a recent development proposed by Jonathan Ho et al. (2020) inspired by nonequilibrium thermodynamics that produces high-fidelity image synthesis using a parameterized Markov chain~\cite{ho2020denoising}. Beginning with the training sample, each step of the Markov chain adds a single layer of Gaussian noise. A neural network is trained on parameterizing these additional Gaussian noise layers to reverse the process from random noise to a high-fidelity image.
+DDPMs are a recent development proposed by Jonathan Ho et al. (2020) inspired by nonequilibrium thermodynamics that produces high-fidelity image synthesis using a parameterized Markov chain \cite{ho2020denoising}. Beginning with the training sample, each step of the Markov chain adds a single layer of Gaussian noise. A neural network is trained on parameterizing these additional Gaussian noise layers to reverse the process from random noise to a high-fidelity image.
 
 \begin{figure}[H]
     \includegraphics[width=\columnwidth]{ddpm.png}
@@ -592,7 +592,7 @@ Since QBMs and RBMs both lack convolutional layers, which are especially effecti
 
 
 \subsection{Trilemma of Generative Learning}
-Recall the trilemma consists of the following: ``(i) high-quality sampling, (ii) mode coverage and sample diversity, and (iii) fast and computationally inexpensive sampling''~\cite{xiao2022DDGAN}.
+Recall the trilemma consists of the following: ``(i) high-quality sampling, (ii) mode coverage \& sample diversity, and (iii) fast and computationally inexpensive sampling''~\cite{xiao2022DDGAN}.
 
 \subsubsection{High-Quality Sampling}
 High-quality sampling is captured by FID and Inception scores. The QBM performed terribly on the Inception score and only moderately well on FID scores. Thus, it would be inaccurate to say the quantum annealer is uniquely producing high-quality samples. We hypothesize the main contributor to this result is the lack of convolutional layers and the image stitching required for training. This will be further discussed in \ref{future}.
